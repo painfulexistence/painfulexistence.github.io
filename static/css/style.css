@@ -269,17 +269,17 @@ body.light hr.separator {
   }
 
   body.light.portfolio .slideshow nav span.nav-next {
-    background-image: url("../img/projects/navigation/right-arrow.png");
+    background-image: url("img/projects/navigation/right-arrow.png");
     background-size: cover;
   }
 
   body.light.portfolio .slideshow nav span.nav-prev {
-    background-image: url("../img/projects/navigation/left-arrow.png");
+    background-image: url("img/projects/navigation/left-arrow.png");
     background-size: cover;
   }
 
   body.light.portfolio .slideshow nav span.nav-close {
-    background-image: url("../img/projects/navigation/close-button.png");
+    background-image: url("mg/projects/navigation/close-button.png");
     background-size: cover;
   }
 
@@ -496,7 +496,7 @@ body.light hr.separator {
 }
 
 .home .bg {
-  background-image: url(../img/background.png);
+  background-image: url("../images/background.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
