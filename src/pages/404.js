@@ -1,11 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
-import Navbar from "../components/Navbar"
+import { Link, navigate } from "gatsby"
 
 const NotFoundPage = ({location, data}) => {
     return (
-        <div className="text-white bg-neutral-800 404">
-            <Navbar />
+        <div className="404">
             <main>
                 <title>Not found</title>
                 <h1>Page not found</h1>

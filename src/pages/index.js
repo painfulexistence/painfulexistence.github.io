@@ -5,8 +5,8 @@ import imgProfilePic from "../images/profile.jpeg"
 
 const IndexPage = ({location, data}) => {
     return (
-        <div className="text-white bg-neutral-800 home">
-            <Navbar />
+        <div className="home">
+            <Navbar location={location} />
             <main className="container-fluid main-container container-home p-0 revealator-slideup revealator-once revealator-delay1">
                 <div className="color-block d-none d-lg-block"></div>
                 <div className="row home-details-container align-items-center">

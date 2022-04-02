@@ -1,11 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import Navbar from "../components/Navbar"
 
 const ContactPage = ({location, data}) => {
     return (
-        <div className="text-white bg-neutral-800 contact">
-            <Navbar />
+        <div className="contact">
+            <Navbar location={location} />
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>get in <span>touch</span></h1>
                 <span className="title-bg">contact</span>
@@ -17,17 +17,11 @@ const ContactPage = ({location, data}) => {
                             <h3 className="text-uppercase custom-title mb-0 ft-wt-600 pb-3">Bring your game ideas into life</h3>
                             <p className="open-sans-font mb-3">Loic Chen</p>
                             <p className="open-sans-font custom-span-contact position-relative">
-                                <i className="fa fa-phone position-absolute"></i>
-                                <span className="d-block">PHONE</span>+886 966 733 316
-                            </p>
-                            <p className="open-sans-font custom-span-contact position-relative">
                                 <i className="fa fa-envelope-open position-absolute"></i>
                                 <span className="d-block">MAIL</span>910041@gmail.com
                             </p>
                             <ul className="social list-unstyled pt-1 mb-5">
                                 <li className="twitter"><a title="Twitter" href="https://twitter.com/Painfulexisten1"><i className="fa fa-twitter"></i></a>
-                                </li>
-                                <li className="facebook"><a title="Facebook" href="https://www.facebook.com/everydayfrustratedbymyself"><i className="fa fa-facebook"></i></a>
                                 </li>
                                 <li className="linkedin"><a title="Linkedin" href="https://www.linkedin.com/in/ming-you-chen/"><i className="fa fa-linkedin"></i></a>
                                 </li>

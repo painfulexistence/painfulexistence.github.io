@@ -1,11 +1,12 @@
 import React from "react"
+import { Link, navigate } from "gatsby"
 import Navbar from "../components/Navbar"
-import profilePic from "../images/profile.jpeg"
+import imgProfilePic from "../images/profile.jpeg"
 
 const AboutPage = ({location, data}) => {
     return (
-        <div className="text-white bg-neutral-800 about">
-            <Navbar />
+        <div className="about">
+            <Navbar location={location} />
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>ABOUT <span>ME</span></h1>
                 <span className="title-bg">Resume</span>
@@ -21,7 +22,7 @@ const AboutPage = ({location, data}) => {
                                     <h3 className="text-uppercase custom-title mb-0 ft-wt-600">personal infos</h3>
                                 </div>
                                 <div className="col-12 d-block d-sm-none">
-                                    <img src={profilePic} className="img-fluid main-img-mobile" alt="my picture" />
+                                    <img src={imgProfilePic} className="img-fluid main-img-mobile" alt="my picture" />
                                 </div>
                                 <div className="col-6">
                                     <ul className="about-list list-unstyled open-sans-font">

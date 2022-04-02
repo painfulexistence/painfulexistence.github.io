@@ -1,5 +1,7 @@
 import React from "react"
+import { Link, navigate } from "gatsby"
 import Navbar from "../components/Navbar"
+
 import imgAnomie from "../images/anomie-island.jpg"
 import imgPlayreal from "../images/playreal-portfolio_1.png"
 import imgVictimsGame from "../images/victims-game.png"
@@ -9,8 +11,8 @@ import imgMarkbook from "../images/markbook.png"
 
 const PortfolioPage = ({location, data}) => {
     return (
-        <div className="text-white bg-neutral-800 portfolio">
-            <Navbar />
+        <div className="portfolio">
+            <Navbar location={location} />
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>my <span>portfolio</span></h1>
                 <span className="title-bg">projects</span>
@@ -79,7 +81,7 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src="./img/anomie-island.jpg" alt="Portolio Image" />
+                                    <img src={imgAnomie} />
                                 </figure>
                             </li>
                             <li>
@@ -101,7 +103,7 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src="./img/playreal-portfolio_1.png" alt="Portolio Image" />
+                                    <img src={imgPlayreal} />
                                 </figure>
                             </li>
                             <li>
@@ -147,7 +149,7 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src="./img/atmospheric_2.png" alt="Portolio Image" />
+                                    <img src={imgAtmospheric} />
                                 </figure>
                             </li>
                             <li>
@@ -166,7 +168,7 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src="./img/symphony.png" alt="Portolio Image" />
+                                    <img src={imgSymphony} />
                                 </figure>
                             </li>
                             <li>
@@ -185,7 +187,7 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src="./img/markbook_2.png" alt="Portolio Image" />
+                                    <img src={imgMarkbook} />
                                 </figure>
                             </li>
                         </ul>
