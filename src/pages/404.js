@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import Layout from "../components/Layout"
+import Navbar from "../components/Navbar"
 
 const NotFoundPage = ({location, data}) => {
     return (
-        <Layout>
+        <div className="text-white bg-neutral-800 404">
+            <Navbar />
             <main>
                 <title>Not found</title>
                 <h1>Page not found</h1>
@@ -12,7 +13,7 @@ const NotFoundPage = ({location, data}) => {
                     <Link to="/">Go home</Link>.
                 </p>
             </main>
-        </Layout>
+        </div>
     )
 }
 

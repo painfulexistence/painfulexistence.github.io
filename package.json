@@ -1,11 +1,8 @@
 {
-    "name": "my-gatsby-site",
-    "version": "1.0.0",
+    "name": "painful-games-website",
+    "version": "0.9.0",
     "private": true,
-    "description": "My Gatsby Site",
-    "keywords": [
-        "gatsby"
-    ],
+    "description": "PainfulGames studio website, powered by react, gatsby, and tailwind",
     "scripts": {
         "develop": "gatsby develop",
         "start": "gatsby develop",

@@ -1,10 +1,16 @@
 import React from "react"
-import Layout from "../components/Layout"
-
+import Navbar from "../components/Navbar"
+import imgAnomie from "../images/anomie-island.jpg"
+import imgPlayreal from "../images/playreal-portfolio_1.png"
+import imgVictimsGame from "../images/victims-game.png"
+import imgAtmospheric from "../images/atmospheric_2.png"
+import imgSymphony from "../images/symphony.png"
+import imgMarkbook from "../images/markbook.png"
 
 const PortfolioPage = ({location, data}) => {
     return (
-        <Layout className="home">
+        <div className="text-white bg-neutral-800 portfolio">
+            <Navbar />
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>my <span>portfolio</span></h1>
                 <span className="title-bg">projects</span>
@@ -16,37 +22,37 @@ const PortfolioPage = ({location, data}) => {
                         <ul className="row grid">
                             <li>
                                 <figure>
-                                    <img src="./img/anomie-island.jpg" alt="Portolio Image" />
+                                    <img src={imgAnomie} />
                                     <div><span>"Anomie Island", an exploration puzzle game on PC</span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="./img/playreal-portfolio_1.png" alt="Portolio Image" />
+                                    <img src={imgPlayreal} />
                                     <div><span>"PlayReal", a city exploration mobile web game engine </span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="./img/victims-game.png" alt="Portolio Image" />
+                                    <img src={imgVictimsGame} />
                                     <div><span>"The Victims' Game", a mobile web city exploration game </span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="./img/atmospheric_2.png" alt="Portolio Image" />
+                                    <img src={imgAtmospheric} />
                                     <div><span>"Atmospheric 3D", my own 3D rendering engine </span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="./img/symphony.png" alt="Portolio Image" />
+                                    <img src={imgSymphony} />
                                     <div><span>"Symphony", a PDF collabaorative annotation web application </span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src="./img/markbook_2.png" alt="Portolio Image" />
+                                    <img src={imgMarkbook} alt="Portolio Image" />
                                     <div><span>"Markbook", my own social media website </span></div>
                                 </figure>
                             </li>
@@ -191,7 +197,7 @@ const PortfolioPage = ({location, data}) => {
                     </section>
                 </div>
             </section>
-        </Layout>
+        </div>
     )
 }
 

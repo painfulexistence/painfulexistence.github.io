@@ -1,10 +1,11 @@
 import React from "react"
-import Layout from "../components/Layout"
+import Navbar from "../components/Navbar"
 import profilePic from "../images/profile.jpeg"
 
-const CVPage = ({location, data}) => {
+const AboutPage = ({location, data}) => {
     return (
-        <Layout className="home">
+        <div className="text-white bg-neutral-800 about">
+            <Navbar />
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>ABOUT <span>ME</span></h1>
                 <span className="title-bg">Resume</span>
@@ -210,8 +211,8 @@ const CVPage = ({location, data}) => {
                     </div>
                 </div>
             </section>
-        </Layout>
+        </div>
     )
 }
 
-export default CVPage
+export default AboutPage
