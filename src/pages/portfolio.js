@@ -129,7 +129,7 @@ const PortfolioPage = ({location, data}) => {
                                         </div>
                                     </figcaption>
                                     <div className="videocontainer">
-                                        <iframe className="youtube-video" src="https://www.youtube.com/embed/Z5Ly98kLj4o" allowfullscreen></iframe>
+                                        <iframe className="youtube-video" src="https://www.youtube.com/embed/Z5Ly98kLj4o" allowFullScreen></iframe>
                                     </div>
                                 </figure>
                             </li>
@@ -192,9 +192,9 @@ const PortfolioPage = ({location, data}) => {
                             </li>
                         </ul>
                         <nav>
-                            <span className="icon nav-prev"><img src="img/projects/navigation/left-arrow.png" alt="previous" /></span>
-                            <span className="icon nav-next"><img src="img/projects/navigation/right-arrow.png" alt="next" /></span>
-                            <span className="nav-close"><img src="img/projects/navigation/close-button.png" alt="close" /> </span>
+                            <span className="icon nav-prev"><img src="/img/projects/navigation/left-arrow.png" alt="previous" /></span>
+                            <span className="icon nav-next"><img src="/img/projects/navigation/right-arrow.png" alt="next" /></span>
+                            <span className="nav-close"><img src="/img/projects/navigation/close-button.png" alt="close" /> </span>
                         </nav>
                     </section>
                 </div>
