@@ -1,7 +1,11 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, navigate } from "gatsby"
 
 const NotFoundPage = ({location, data}) => {
+    useEffect(() => {
+        window.scroll(0, 1)
+    })
+
     return (
         <div className="404">
             <main>

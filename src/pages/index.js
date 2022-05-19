@@ -4,6 +4,10 @@ import Navbar from "../components/Navbar"
 import imgProfilePic from "../images/profile.jpeg"
 
 const IndexPage = ({location, data}) => {
+    useEffect(() => {
+        window.scroll(0, 1)
+    })
+
     return (
         <div className="home">
             <Navbar location={location} />

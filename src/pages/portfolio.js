@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, navigate } from "gatsby"
 import Navbar from "../components/Navbar"
 
@@ -10,6 +10,10 @@ import imgSymphony from "../images/symphony.png"
 import imgMarkbook from "../images/markbook.png"
 
 const PortfolioPage = ({location, data}) => {
+    useEffect(() => {
+        window.scroll(0, 1)
+    })
+
     return (
         <div className="portfolio">
             <Navbar location={location} />

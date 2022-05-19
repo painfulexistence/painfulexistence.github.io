@@ -1,9 +1,13 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, navigate } from "gatsby"
 import Navbar from "../components/Navbar"
 import imgProfilePic from "../images/profile.jpeg"
 
 const AboutPage = ({location, data}) => {
+    useEffect(() => {
+        window.scroll(0, 1)
+    })
+    
     return (
         <div className="about">
             <Navbar location={location} />
