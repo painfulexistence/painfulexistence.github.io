@@ -23,7 +23,6 @@ export default function HTML(props) {
                 <link href="/css/style.css" rel="stylesheet" />
                 <link href="/css/skins/goldenrod.css" rel="stylesheet" />
 
-                <script src="/js/modernizr.custom.js"></script>
                 { props.headComponents }
             </head>
             <body {...props.bodyAttributes}>
@@ -33,16 +32,6 @@ export default function HTML(props) {
                     id="___gatsby"
                     dangerouslySetInnerHTML={{ __html: props.body }}
                 />
-                <script src="/js/jquery-3.5.0.min.js"></script>
-                <script src="/js/preloader.min.js"></script>
-                <script src="/js/fm.revealator.jquery.min.js"></script>
-                <script src="/js/imagesloaded.pkgd.min.js"></script>
-                <script src="/js/masonry.pkgd.min.js"></script>
-                <script src="/js/classie.js"></script>
-                <script src="/js/cbpGridGallery.js"></script>
-                <script src="/js/jquery.hoverdir.js"></script>
-                <script src="/js/popper.min.js"></script>
-                <script src="/js/bootstrap.js"></script>
                 <script src="/js/custom.js"></script>
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHMWKPM7NH"></script>
                 <script
