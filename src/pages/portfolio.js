@@ -1,21 +1,18 @@
 import React, { useEffect } from "react"
-import { Link, navigate } from "gatsby"
+import Head from "next/head"
+import Link from "next/link"
+import Image from 'next/image'
 import Navbar from "../components/Navbar"
 
-import imgAnomie from "../images/anomie-island.jpg"
-import imgPlayreal from "../images/playreal-portfolio_1.png"
-import imgVictimsGame from "../images/victims-game.png"
-import imgAtmospheric from "../images/atmospheric_2.png"
-import imgSymphony from "../images/symphony.png"
-import imgMarkbook from "../images/markbook.png"
-
 const PortfolioPage = ({location, data}) => {
-    useEffect(() => {
-        window.scroll(0, 1)
-    })
-
     return (
-        <div className="portfolio">
+        <>
+            <Head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
+            </Head>
             <Navbar location={location} />
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>my <span>portfolio</span></h1>
@@ -28,37 +25,61 @@ const PortfolioPage = ({location, data}) => {
                         <ul className="row grid">
                             <li>
                                 <figure>
-                                    <img src={imgAnomie} />
+                                    <Image 
+                                        src="/images/anomie-island.jpg"
+                                        width={100}
+                                        height={100}
+                                    />
                                     <div><span>"Anomie Island", an exploration puzzle game on PC</span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src={imgPlayreal} />
+                                    <Image 
+                                        src="/images/playreal-portfolio_1.png"
+                                        width={100}
+                                        height={100} 
+                                    />
                                     <div><span>"PlayReal", a city exploration mobile web game engine </span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src={imgVictimsGame} />
+                                    <Image 
+                                        src="/images/victims-game.png"
+                                        width={100}
+                                        height={100}
+                                    />
                                     <div><span>"The Victims' Game", a mobile web city exploration game </span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src={imgAtmospheric} />
+                                    <Image 
+                                        src="/images/atmospheric_2.png"
+                                        width={100}
+                                        height={100}
+                                    />
                                     <div><span>"Atmospheric 3D", my own 3D rendering engine </span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src={imgSymphony} />
+                                    <Image 
+                                        src="/images/symphony.png"
+                                        width={100}
+                                        height={100}
+                                    />
                                     <div><span>"Symphony", a PDF collabaorative annotation web application </span></div>
                                 </figure>
                             </li>
                             <li>
                                 <figure>
-                                    <img src={imgMarkbook} alt="Portolio Image" />
+                                    <Image 
+                                        src="/images/markbook.png"
+                                        width={100}
+                                        height={100} 
+                                    />
                                     <div><span>"Markbook", my own social media website </span></div>
                                 </figure>
                             </li>
@@ -85,7 +106,11 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src={imgAnomie} />
+                                    <Image 
+                                        src="/images/anomie-island.jpg"
+                                        width={200}
+                                        height={200}
+                                    />
                                 </figure>
                             </li>
                             <li>
@@ -107,7 +132,11 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src={imgPlayreal} />
+                                    <Image 
+                                        src="/images/playreal-portfolio_1.png"
+                                        width={200}
+                                        height={200}
+                                    />
                                 </figure>
                             </li>
                             <li>
@@ -153,7 +182,11 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src={imgAtmospheric} />
+                                    <Image 
+                                        src="/images/atmospheric_2.png"
+                                        width={200}
+                                        height={200}
+                                    />
                                 </figure>
                             </li>
                             <li>
@@ -172,7 +205,11 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src={imgSymphony} />
+                                    <Image 
+                                        src="/images/symphony.png"
+                                        width={200}
+                                        height={200}
+                                    />
                                 </figure>
                             </li>
                             <li>
@@ -191,19 +228,23 @@ const PortfolioPage = ({location, data}) => {
                                             </div>
                                         </div>
                                     </figcaption>
-                                    <img src={imgMarkbook} />
+                                    <Image 
+                                        src="/images/markbook.png"
+                                        width={200}
+                                        height={200}
+                                    />
                                 </figure>
                             </li>
                         </ul>
                         <nav>
-                            <span className="icon nav-prev"><img src="/img/projects/navigation/left-arrow.png" alt="previous" /></span>
-                            <span className="icon nav-next"><img src="/img/projects/navigation/right-arrow.png" alt="next" /></span>
-                            <span className="nav-close"><img src="/img/projects/navigation/close-button.png" alt="close" /> </span>
+                            <span className="icon nav-prev"><Image src="/images/navigation/left-arrow.png" width={50} height={50} alt="previous" /></span>
+                            <span className="icon nav-next"><Image src="/images/navigation/right-arrow.png" width={50} height={50} alt="next" /></span>
+                            <span className="nav-close"><Image src="/images/navigation/close-button.png" width={50} height={50} alt="close" /> </span>
                         </nav>
                     </section>
                 </div>
             </section>
-        </div>
+        </>
     )
 }
 

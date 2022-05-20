@@ -1,29 +1,16 @@
 {
-    "name": "painful-games-website",
+    "name": "painfulexistence.github.io",
     "version": "0.9.0",
     "private": true,
-    "description": "PainfulGames studio website, powered by react, gatsby, and tailwind",
+    "description": "Forked Paths studio website, powered by react and nextjs",
     "scripts": {
-        "develop": "gatsby develop",
-        "start": "gatsby develop",
-        "build": "gatsby build",
-        "serve": "gatsby serve",
-        "deploy": "gatsby build && gh-pages -d public -b main",
-        "clean": "gatsby clean"
+        "start": "next dev",
+        "build": "next build",
+        "serve": "next start"
     },
     "dependencies": {
-        "gatsby": "^4.7.0",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1"
-    },
-    "resolutions": {
-        "**/immer": "^9.0.6",
-        "**/node-fetch": "^2.6.7"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.4.2",
-        "gatsby-plugin-postcss": "^5.7.0",
-        "postcss": "^8.4.6",
-        "tailwindcss": "^3.0.23"
+        "next": "latest",
+        "react": "17.0.2",
+        "react-dom": "17.0.2"
     }
 }

@@ -1,14 +1,18 @@
 import React, { useEffect } from "react"
-import { Link, navigate } from "gatsby"
+import Head from "next/head"
+import Link from "next/link"
+import Image from 'next/image'
 import Navbar from "../components/Navbar"
 
 const ContactPage = ({location, data}) => {
-    useEffect(() => {
-        window.scroll(0, 1)
-    })
-
     return (
-        <div className="contact">
+        <>
+            <Head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
+            </Head>
             <Navbar location={location} />
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>get in <span>touch</span></h1>
@@ -60,7 +64,7 @@ const ContactPage = ({location, data}) => {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     )
 }
 

@@ -1,21 +1,24 @@
 import React, { useEffect } from "react"
-import { Link, navigate } from "gatsby"
+import Head from "next/head"
+import Link from "next/link"
 
 const NotFoundPage = ({location, data}) => {
-    useEffect(() => {
-        window.scroll(0, 1)
-    })
-
     return (
-        <div className="404">
+        <>
+            <Head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
+            </Head>
             <main>
                 <title>Not found</title>
                 <h1>Page not found</h1>
                 <p>
-                    <Link to="/">Go home</Link>.
+                    <Link href="/">Go home</Link>.
                 </p>
             </main>
-        </div>
+        </>
     )
 }
 

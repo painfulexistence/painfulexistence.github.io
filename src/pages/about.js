@@ -1,15 +1,18 @@
 import React, { useEffect } from "react"
-import { Link, navigate } from "gatsby"
+import Head from "next/head"
+import Link from "next/link"
+import Image from 'next/image'
 import Navbar from "../components/Navbar"
-import imgProfilePic from "../images/profile.jpeg"
 
-const AboutPage = ({location, data}) => {
-    useEffect(() => {
-        window.scroll(0, 1)
-    })
-    
+const AboutPage = ({location, data}) => {    
     return (
-        <div className="about">
+        <>
+            <Head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
+            </Head>
             <Navbar location={location} />
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>ABOUT <span>ME</span></h1>
@@ -26,7 +29,12 @@ const AboutPage = ({location, data}) => {
                                     <h3 className="text-uppercase custom-title mb-0 ft-wt-600">personal infos</h3>
                                 </div>
                                 <div className="col-12 d-block d-sm-none">
-                                    <img src={imgProfilePic} className="img-fluid main-img-mobile" alt="my picture" />
+                                    <Image 
+                                        src="/images/profile.jpeg"
+                                        width={100}
+                                        height={100}
+                                        className="img-fluid main-img-mobile" 
+                                    />
                                 </div>
                                 <div className="col-6">
                                     <ul className="about-list list-unstyled open-sans-font">
@@ -216,7 +224,7 @@ const AboutPage = ({location, data}) => {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     )
 }
 
