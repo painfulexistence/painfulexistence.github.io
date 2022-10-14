@@ -1,18 +1,10 @@
 import React, { useEffect } from "react"
-import Head from "next/head"
 import Image from "next/image"
-import Navbar from "../components/Navbar"
+import Layout from "../components/layout"
 
 const AboutPage = ({location, data}) => {    
     return (
-        <>
-            <Head>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                />
-            </Head>
-            <Navbar location={location} />
+        <Layout>
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>ABOUT <span>ME</span></h1>
                 <span className="title-bg">Resume</span>
@@ -38,7 +30,6 @@ const AboutPage = ({location, data}) => {
                                 <div className="col-6">
                                     <ul className="about-list list-unstyled open-sans-font">
                                         <li> <span className="title">Name :</span> <span className="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">Loic Chen</span> </li>
-                                        <li> <span className="title">Age :</span> <span className="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">25</span> </li>
                                         <li> <span className="title">Location :</span> <span className="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">Taipei, Taiwan</span> </li>
                                     </ul>
                                 </div>
@@ -47,9 +38,6 @@ const AboutPage = ({location, data}) => {
                                         <li> <span className="title">Email :</span> <span className="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">910041@gmail.com</span> </li>
                                         <li> <span className="title">Languages :</span> <span className="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">Mandarin, English</span> </li>
                                     </ul>
-                                </div>
-                                <div className="col-12 mt-3">
-                                    <a href="https://www.cakeresume.com/loic-chen" className="btn btn-download">Resume</a>
                                 </div>
                             </div>
                         </div>
@@ -223,7 +211,7 @@ const AboutPage = ({location, data}) => {
                     </div>
                 </div>
             </section>
-        </>
+        </Layout>
     )
 }
 

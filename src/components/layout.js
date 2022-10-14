@@ -1,7 +1,15 @@
-import styles from './layout.module.css'
+import Container from "@mui/material/Container"
+import Header from "./Header"
+import Footer from "./Footer"
 
 export default function Layout({ children }) {
     return (
-        <div className={styles.container}>{children}</div>
+        <>
+            <Container>
+                <Header />
+                {children}
+            </Container>
+            <Footer />
+        </>
     )
 }

@@ -1,18 +1,10 @@
 import React, { useEffect } from "react"
-import Head from "next/head"
 import Image from "next/image"
-import Navbar from "../components/Navbar"
+import Layout from "../components/layout"
 
 const PortfolioPage = ({location, data}) => {
     return (
-        <>
-            <Head>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                />
-            </Head>
-            <Navbar location={location} />
+        <Layout>
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>my <span>portfolio</span></h1>
                 <span className="title-bg">projects</span>
@@ -243,7 +235,7 @@ const PortfolioPage = ({location, data}) => {
                     </section>
                 </div>
             </section>
-        </>
+        </Layout>
     )
 }
 

@@ -1,17 +1,9 @@
 import React, { useEffect } from "react"
-import Head from "next/head"
-import Navbar from "../components/Navbar"
+import Layout from "../components/layout"
 
 const ContactPage = ({location, data}) => {
     return (
-        <>
-            <Head>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                />
-            </Head>
-            <Navbar location={location} />
+        <Layout>
             <section className="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
                 <h1>get in <span>touch</span></h1>
                 <span className="title-bg">contact</span>
@@ -26,14 +18,7 @@ const ContactPage = ({location, data}) => {
                                 <i className="fa fa-envelope-open position-absolute"></i>
                                 <span className="d-block">MAIL</span>910041@gmail.com
                             </p>
-                            <ul className="social list-unstyled pt-1 mb-5">
-                                <li className="twitter"><a title="Twitter" href="https://twitter.com/Painfulexisten1"><i className="fa fa-twitter"></i></a>
-                                </li>
-                                <li className="linkedin"><a title="Linkedin" href="https://www.linkedin.com/in/ming-you-chen/"><i className="fa fa-linkedin"></i></a>
-                                </li>
-                                <li className="gitlab"><a title="Gitlab" href="https://gitlab.com/painfulexistence"><i className="fa fa-gitlab"></i></a>
-                                </li>
-                            </ul>
+
                         </div>
                         <div className="col-12 col-lg-8">
                             <form className="contactform" method="post" action="php/process-form.php">
@@ -62,7 +47,7 @@ const ContactPage = ({location, data}) => {
                     </div>
                 </div>
             </section>
-        </>
+        </Layout>
     )
 }
 
