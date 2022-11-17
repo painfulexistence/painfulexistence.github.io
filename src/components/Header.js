@@ -1,7 +1,8 @@
 import React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import Box from "@mui/material/Box"
-import Navbar from "./Navbar"
+
 
 const Header = (props) => {
     return (
@@ -9,7 +10,7 @@ const Header = (props) => {
             <Box sx={{px: 24}}>
                 <Image src="/images/platformer_mockup.png" width={640} height={360} layout="responsive" />
             </Box>
-            <Navbar />
+
         </Box>
     )
 }

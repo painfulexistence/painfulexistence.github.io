@@ -1,29 +1,42 @@
-import React, { useEffect } from "react"
+import styled from "@emotion/styled"
+import StraightIcon from '@mui/icons-material/Straight'
 import Link from "next/link"
-import Toolbar from "@mui/material/Toolbar"
 import Button from "@mui/material/Button"
 
-const Navbar = () => {
+const Container = styled.div`
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 5px 20px 5px;
+`
+
+const HashLink = styled.div`
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+`
+
+const NavBar = () => {
     return (
-        <Toolbar
-            component="nav"
-            variant="dense"
-            sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
-        >
-            <Link href="/">
-                <Button variant="text">Home</Button>
-            </Link>
-            <Link href="/portfolio/">
-                <Button variant="text">Portfolio</Button>
-            </Link>
-            <Link href="/about/">
-                <Button variant="text">CV</Button>
-            </Link>
-            <Link href="/contact/">
-                <Button variant="text">About</Button>
-            </Link>
-        </Toolbar>
+        <Container>
+            <HashLink href="#work">
+                Work
+            </HashLink>
+            <HashLink href="#about">
+                About
+            </HashLink>
+            <HashLink href="#projects">
+                Projects
+            </HashLink>
+            <HashLink href="/">
+                <StraightIcon />
+            </HashLink>
+        </Container>
     )
 }
 
-export default Navbar
+export default NavBar

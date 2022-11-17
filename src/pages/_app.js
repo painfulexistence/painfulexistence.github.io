@@ -3,6 +3,9 @@ import Head from "next/head"
 import Script from "next/script"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
+import { useRef } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 
 const theme = createTheme({
     palette: {
@@ -17,6 +20,8 @@ const theme = createTheme({
 })
 
 export default function App({ Component, pageProps }) {
+    const containerRef = useRef(null)
+    
     return (
         <>
             <Head>
