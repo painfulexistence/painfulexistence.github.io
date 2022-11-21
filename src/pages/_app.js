@@ -1,4 +1,3 @@
-import "../styles/index.css"
 import Head from "next/head"
 import Script from "next/script"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
@@ -6,6 +5,10 @@ import CssBaseline from "@mui/material/CssBaseline"
 import { useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+import "../styles/circle.css"
+import "../styles/style.css"
+import "../styles/skins/magenta.css"
+import "../styles/global.css"
 
 const theme = createTheme({
     palette: {

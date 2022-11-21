@@ -10,7 +10,7 @@ import { Water } from "three/addons/objects/Water"
 const ThreeJSContainer = styled.div`
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 `
@@ -23,31 +23,6 @@ const TexturedOverlay = styled.div`
     left: 0;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.25);
-`
-
-const Title = styled.div`
-    width: inherit;
-    height: inherit;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-        font-size: 60px;
-        font-weight: 800;
-        margin: 0;
-    }
-
-    h2 {
-        font-size: 20px;
-        font-weight: 600;
-        margin: 0;
-    }
 `
 
 const GL = styled.canvas`
@@ -134,11 +109,6 @@ const ThreeJS = () => {
         <ThreeJSContainer>
             <GL id="gl" />
             <TexturedOverlay />
-            <Title>
-                <h1>Loïc Chen</h1>
-                <h2>Web Developer</h2>
-                <h2>Game Developer</h2>
-            </Title>
         </ThreeJSContainer>
     )
 }

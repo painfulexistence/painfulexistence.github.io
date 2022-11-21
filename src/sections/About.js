@@ -2,29 +2,29 @@ import styled from "@emotion/styled"
 import Image from "next/image"
 
 const Section = styled.section`
-    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+
+const SelfIntro = styled.div`
+    font-size: large;
+    h1 {
+        font-size: xx-large;
+    }
 `
 
 const About = () => {
     return (
         <Section>
-            <div className="row home-details-container align-items-center">
-                <div className="col-lg-4 bg position-fixed d-none d-lg-block"></div>
-                <div className="col-12 col-lg-8 offset-lg-4 home-details text-left text-sm-center text-lg-left">
-                    <div>
-                        <Image 
-                            src="/images/profile.jpeg"
-                            width={100}
-                            height={100}
-                            className="img-fluid main-img-mobile d-none d-sm-block d-lg-none" 
-                        />
-                        <h6 className="text-uppercase open-sans-font mb-0 d-block d-sm-none d-lg-block">Hi there!</h6>
-                        <h1 className="text-uppercase poppins-font"><span>My name is </span>Loïc Chen</h1>
-                        <p className="open-sans-font">I'm an indie game developer and a hobbyist graphics programmer who's passionate about crafting heart-touching gameplay experiences.</p>
-                        <p className="open-sans-font">Also a core gamer and a big fan of souls-like action RPGs!</p>
-                    </div>
-                </div>
-            </div>
+            <SelfIntro>
+                <h1>Hi, I'm Loïc.</h1>
+                <p>I'm a 4+ years experienced software engineer specializing in Web Development and Game Development.</p>
+                <p>My passion lies in Computer Graphics, Game Engine Programming, and Realtime VFX.</p>
+                <p>I currently work as a freelancer.</p>
+                <p>Also a core gamer most fascinated by Soulsborne and Metroidvania games.</p>
+            </SelfIntro>
         </Section>
     )
 }

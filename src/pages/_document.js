@@ -6,13 +6,13 @@ export default function Document() {
             <Head>
                 <meta charSet="utf-8" />
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+                <title>Loïc Chen</title>
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
                 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
                 <link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,500,700,900" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC:300,400,500,700,900" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-                <link href="/css/circle.css" rel="stylesheet" />
-                <link href="/css/style.css" rel="stylesheet" />
-                <link href="/css/skins/goldenrod.css" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"></link>
             </Head>
             <body>
                 <Main />
