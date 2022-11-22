@@ -13,6 +13,11 @@ const ThreeJSContainer = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 const TexturedOverlay = styled.div`
@@ -23,11 +28,6 @@ const TexturedOverlay = styled.div`
     left: 0;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.25);
-`
-
-const GL = styled.canvas`
-    width: 100%;
-    height: 100%;
 `
 
 function isWebGLAvailable() {
@@ -46,7 +46,7 @@ const ThreeJS = () => {
         const canvas = document.getElementById("gl")
         const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true })
         renderer.setPixelRatio(window.devicePixelRatio)
-        renderer.setSize(canvas.offsetWidth, canvas.offsetHeight)
+        renderer.setSize(window.innerWidth, window.innerHeight)
         renderer.toneMapping = THREE.ACESFilmicToneMapping
 
         const scene = new THREE.Scene()
@@ -71,6 +71,7 @@ const ThreeJS = () => {
         scene.add(ambientLight)
 
         window.addEventListener("resize", onWindowResize)
+        document.body.onscroll = onWindowScroll
 
         animate()
 
@@ -101,13 +102,20 @@ const ThreeJS = () => {
         }
 
         function onWindowResize() {
-            console.log("resized")
+            camera.aspect = window.innerWidth / window.innerHeight
+            camera.updateProjectionMatrix()
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            composer.setSize(window.innerWidth, window.innerHeight)
+        }
+
+        function onWindowScroll() {
+            console.log(window.pageYOffset)
         }
     }, [])
 
     return (
         <ThreeJSContainer>
-            <GL id="gl" />
+            <canvas id="gl" />
             <TexturedOverlay />
         </ThreeJSContainer>
     )

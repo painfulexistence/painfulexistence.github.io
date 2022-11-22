@@ -1,7 +1,5 @@
 import styled from "@emotion/styled"
 import StraightIcon from '@mui/icons-material/Straight'
-import Link from "next/link"
-import Button from "@mui/material/Button"
 
 const Container = styled.div`
     position: fixed;
@@ -12,29 +10,35 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px 5px 20px 5px;
+    padding: 10px 20px 10px 20px;
 `
 
-const HashLink = styled.div`
+const Link = styled.div`
     writing-mode: vertical-rl;
     text-orientation: mixed;
+    font-weight: bolder;
+    color: #BBBBBB;
+    :hover {
+        color: #FFFFFF;
+    }
+    cursor: pointer;
 `
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <Container>
-            <HashLink href="#work">
-                Work
-            </HashLink>
-            <HashLink href="#about">
-                About
-            </HashLink>
-            <HashLink href="#projects">
-                Projects
-            </HashLink>
-            <HashLink href="/">
+            <Link onClick={() => props.onNavigate("Home")}>
                 <StraightIcon />
-            </HashLink>
+            </Link>
+            <Link onClick={() => props.onNavigate("Portfolio")}>
+                Projects
+            </Link>
+            <Link onClick={() => props.onNavigate("Experiences")}>
+                Experiences
+            </Link>
+            <Link onClick={() => props.onNavigate("About")}>
+                About
+            </Link>
         </Container>
     )
 }

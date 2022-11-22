@@ -4,7 +4,11 @@ import NavBar from "../components/Navbar"
 import Three from "../components/Three"
 
 const Section = styled.section`
+    width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const Title = styled.div`
