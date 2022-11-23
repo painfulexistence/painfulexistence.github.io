@@ -8,7 +8,7 @@ import Image from "next/image"
 
 const Project = (props) => {
     return (
-        <Card maxWidth={480}>
+        <Card>
             <CardHeader
                 title={props.title}
                 subheader={props.subheader}
