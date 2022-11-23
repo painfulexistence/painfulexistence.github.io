@@ -10,7 +10,9 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px 20px 10px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
 `
 
 const Link = styled.div`
