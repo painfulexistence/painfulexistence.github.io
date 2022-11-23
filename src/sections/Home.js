@@ -1,7 +1,5 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
-import NavBar from "../components/Navbar"
-import Three from "../components/Three"
 
 const Section = styled.section`
     width: 100%;
