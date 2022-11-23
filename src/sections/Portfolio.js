@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
-import Grid from "@mui/material/Grid"
+import Masonry from "@mui/lab/Masonry"
 import Project from "../components/Project"
 import imgAtmospheric from "../assets/images/atmospheric_2.png"
 import imgPlayReal from "../assets/images/playreal_2.png"
@@ -10,10 +10,10 @@ import imgMarkbook from "../assets/images/markbook_2.png"
 import imgOutOfTheAshes from "../assets/images/out-of-the-ashes.png"
 
 const Section = styled.section`
+    height: 500vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 60px;
     background: rgba(0.1, 0.1, 0.1, 0.2);
 `
@@ -21,18 +21,19 @@ const Section = styled.section`
 const Title = styled.h1`
     align-self: center;
     font-size: 40px;
+    padding-bottom: 40px;
 `
 
-const Timeline = styled.div`
-
+const Item = styled.div`
+    
 `
 
 const Portfolio = () => {
     return (
         <Section>
             <Title>Projects</Title>
-            <Grid container spacing={6}>
-                <Grid item xs={12} sm={6}>
+            <Masonry columns={{xs: 1, sm: 2}} spacing={{xs: 2, sm: 4, lg: 12}}>
+                <Item key={0}>
                     <Project
                         title="Out of The Ashes"
                         subheader="Godot"
@@ -40,15 +41,15 @@ const Portfolio = () => {
                         imgAlt="Out of The Ashes screenshot"
                         content="A 3D adventure RPG in a medieval setting made with Godot Engine. I was responsible for visual effects and AI programming."
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Item>
+                <Item key={1}>
                     <Project
                         title="Unannouced Fishing Game"
                         subheader="Unity"
                         content="A VR fishing game made with Unity Engine. I was responsible for gameplay programming and custom shaders."
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Item>
+                <Item key={2}>
                     <Project
                         title="Atmospheric 3D"
                         subheader="C++, OpenGL"
@@ -58,8 +59,8 @@ const Portfolio = () => {
                             <p>My own cross-platform 3D game engine written in C++. The engine was built with OpenGL and Bullet Physics, featuring HDR rendering, PBR materials, point shadows, directional shadows, and a handful of post-processing effects. I was responsible for the whole project.</p>
                         }
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Item>
+                <Item key={3}>
                     <Project
                         title="PlayReal Engine"
                         subheader="ReactJS, Ruby on Rails"
@@ -70,8 +71,8 @@ const Portfolio = () => {
                         }
                         website="https://playreal.com.tw/"
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Item>
+                <Item key={4}>
                     <Project
                         title="The Victims' Game"
                         subheader="ReactJS"
@@ -85,8 +86,8 @@ const Portfolio = () => {
                             </>
                         }
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Item>
+                <Item key={5}>
                     <Project
                         title="Symphony"
                         subheader="ReactJS, Ruby on Rails"
@@ -94,8 +95,8 @@ const Portfolio = () => {
                         imgAlt="Symphony PDF annotator screenshot"
                         content="A web-based collaborative PDF annotator built with Ruby on Rails, ReactJS, and PostgreSQL. I was responsible for all technical aspects of the project."
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Item>
+                <Item key={6}>
                     <Project
                         title="Markbook"
                         subheader="Ruby on Rails"
@@ -103,8 +104,8 @@ const Portfolio = () => {
                         imgAlt="Markbook screenshot"
                         content="A simple Facebook clone built with Ruby on Rails and PostgreSQL. I was responsible for the whole project."
                     />
-                </Grid>
-            </Grid>
+                </Item>
+            </Masonry>
         </Section>
     )
 }
