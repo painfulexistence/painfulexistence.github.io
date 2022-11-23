@@ -1,6 +1,5 @@
 import { useRef, useEffect, useLayoutEffect } from "react"
 import styled from "@emotion/styled"
-import Container from "@mui/material/Container"
 import { Parallax, ParallaxLayer } from "@react-spring/parallax"
 import * as THREE from "three"
 import { OrbitControls } from "three/addons/controls/OrbitControls"
@@ -9,12 +8,11 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass"
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass"
 import { Water } from "three/addons/objects/Water"
 
-import Layout from "../components/layout"
-import NavBar from "../components/Navbar"
-import Home from "../sections/Home"
-import Work from "../sections/Work"
-import Portfolio from "../sections/Portfolio"
-import About from "../sections/About"
+import NavBar from "./components/Navbar"
+import Home from "./sections/Home"
+import Work from "./sections/Work"
+import Portfolio from "./sections/Portfolio"
+import About from "./sections/About"
 
 const ThreeJSContainer = styled.div`
     width: 100%;
@@ -48,7 +46,7 @@ function isWebGLAvailable() {
     }
 }
 
-const IndexPage = ({location, data}) => {
+const App = ({}) => {
     const parallaxEl = useRef(null)
 
     //useEffect(async () => {
@@ -151,7 +149,7 @@ const IndexPage = ({location, data}) => {
     } 
 
     return (
-        <Layout>
+        <>
             <NavBar onNavigate={handleNavigate} />
             <ThreeJSContainer>
                 <canvas id="gl" />
@@ -171,8 +169,8 @@ const IndexPage = ({location, data}) => {
                     <About />
                 </ParallaxLayer>
             </Parallax>
-        </Layout>
+        </>
     )
 }
 
-export default IndexPage
+export default App

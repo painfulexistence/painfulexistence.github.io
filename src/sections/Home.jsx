@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import Image from "next/image"
 
 const Section = styled.section`
     width: 100%;

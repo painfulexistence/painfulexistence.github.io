@@ -4,7 +4,6 @@ import CardMedia from "@mui/material/CardMedia"
 import CardContent from "@mui/material/CardContent"
 import CardActions from "@mui/material/CardActions"
 import Button from "@mui/material/Button"
-import Image from "next/image"
 
 const Project = (props) => {
     return (
@@ -16,9 +15,10 @@ const Project = (props) => {
             {
                 props.imgSrc
                 ? (
-                    <Image
+                    <img
                         src={props.imgSrc}
                         alt={props.imgAlt}
+                        width="100%"
                     />
                 ) : null
             }

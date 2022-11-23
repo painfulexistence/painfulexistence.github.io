@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import Image from "next/image"
 import Masonry from "@mui/lab/Masonry"
 import Project from "../components/Project"
 import imgAtmospheric from "../assets/images/atmospheric_2.png"
