@@ -6,7 +6,8 @@
     "scripts": {
         "start": "vite",
         "build": "vite build && cp -r dist/* public",
-        "serve": "vite preview"
+        "serve": "vite preview",
+        "lint": "eslint . --ext .js,.jsx"
     },
     "dependencies": {
         "@emotion/react": "^11.9.0",
@@ -21,9 +22,12 @@
         "three": "^0.146.0"
     },
     "devDependencies": {
-        "@types/react": "^18.0.24",
-        "@types/react-dom": "^18.0.8",
         "@vitejs/plugin-react": "^2.2.0",
+        "eslint": "^8.31.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-react": "^7.31.11",
+        "prettier": "^2.8.1",
         "vite": "^3.2.3"
     }
 }
