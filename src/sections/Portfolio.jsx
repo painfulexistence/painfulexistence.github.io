@@ -14,7 +14,7 @@ const Section = styled.section`
     flex-direction: column;
     align-items: center;
     padding: 60px;
-    background: rgba(0.1, 0.1, 0.1, 0.2);
+    background: rgba(0.1, 0.1, 0.1, 0);
 `
 
 const Title = styled.h1`
@@ -24,7 +24,7 @@ const Title = styled.h1`
 `
 
 const Item = styled.div`
-    
+
 `
 
 const Portfolio = () => {
@@ -93,15 +93,6 @@ const Portfolio = () => {
                         imgSrc={imgSymphony}
                         imgAlt="Symphony PDF annotator screenshot"
                         content="A web-based collaborative PDF annotator built with Ruby on Rails, ReactJS, and PostgreSQL. I was responsible for all technical aspects of the project."
-                    />
-                </Item>
-                <Item key={6}>
-                    <Project
-                        title="Markbook"
-                        subheader="Ruby on Rails"
-                        imgSrc={imgMarkbook}
-                        imgAlt="Markbook screenshot"
-                        content="A simple Facebook clone built with Ruby on Rails and PostgreSQL. I was responsible for the whole project."
                     />
                 </Item>
             </Masonry>

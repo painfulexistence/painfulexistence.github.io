@@ -16,7 +16,7 @@ const Title = styled.h1`
 `
 
 const SelfIntro = styled.div`
-    font-size: large;
+    font-size: medium;
     h1 {
         font-size: xx-large;
     }

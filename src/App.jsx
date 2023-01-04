@@ -70,7 +70,7 @@ const App = ({}) => {
         const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight)
         camera.position.setZ(100)
-        
+
         const composer = new EffectComposer(renderer)
         const renderPass = new RenderPass(scene, camera)
         composer.addPass(renderPass)
@@ -95,7 +95,7 @@ const App = ({}) => {
 
         function addStar() {
             const geometry = new THREE.OctahedronGeometry(0.25 * THREE.MathUtils.randFloat(0.1, 5), 0)
-            const material = new THREE.MeshStandardMaterial({ 
+            const material = new THREE.MeshStandardMaterial({
                 color: 0x111111,
                 emissive: 0xffffff,
                 emissiveIntensity: 3 * THREE.MathUtils.randFloat(0.5, 10),
@@ -114,7 +114,7 @@ const App = ({}) => {
 
         function animate() {
             controls.update()
-            
+
             composer.render()
             requestAnimationFrame(animate)
         }
@@ -146,7 +146,7 @@ const App = ({}) => {
                 parallaxEl.current.scrollTo(7)
                 break
         }
-    } 
+    }
 
     return (
         <>
@@ -162,7 +162,7 @@ const App = ({}) => {
                 <ParallaxLayer offset={1} speed={0.25}>
                     <Portfolio />
                 </ParallaxLayer>
-                <ParallaxLayer offset={6} speed={0.25}>
+                <ParallaxLayer offset={5.5} speed={0.25}>
                     <Work />
                 </ParallaxLayer>
                 <ParallaxLayer offset={7} speed={0.25}>
