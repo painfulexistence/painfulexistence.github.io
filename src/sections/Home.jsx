@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import ScrambleText from "../components/ScrambleText"
 
 const Section = styled.section`
     width: 100%;
@@ -33,9 +34,9 @@ const Home = () => {
     return (
         <Section>
             <Title>
-                <h1>Loïc Chen</h1>
-                <h2>Web Developer</h2>
-                <h2>Game Developer</h2>
+                <h1><ScrambleText text="Loïc Chen" /></h1>
+                <h2><ScrambleText text="Render & Engine Engineer" /></h2>
+                <h2><ScrambleText text="Full-Stack Web Developer" /></h2>
             </Title>
         </Section>
     )
