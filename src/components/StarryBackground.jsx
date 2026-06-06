@@ -58,12 +58,24 @@ export default function StarryBackground({ parallaxRef }) {
     })
 
     useEffect(() => {
-        parallaxRef.current.container.current.onscroll = onForegroundScroll
-
-        function onForegroundScroll() {
-            camera.position.setZ(100 - 100 * (parallaxRef.current.container.current.scrollTop / parallaxRef.current.container.current.scrollHeight))
+        if (parallaxRef && parallaxRef.current) {
+            const container = parallaxRef.current.container.current
+            const handleParallaxScroll = () => {
+                camera.position.setZ(100 - 100 * (container.scrollTop / container.scrollHeight))
+            }
+            container.addEventListener('scroll', handleParallaxScroll, { passive: true })
+            return () => container.removeEventListener('scroll', handleParallaxScroll)
+        } else {
+            const handleWindowScroll = () => {
+                const scrollTop = window.scrollY
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+                camera.position.setZ(100 - 100 * (scrollTop / Math.max(1, scrollHeight)))
+            }
+            window.addEventListener('scroll', handleWindowScroll, { passive: true })
+            handleWindowScroll() // run once initially
+            return () => window.removeEventListener('scroll', handleWindowScroll)
         }
-    }, [parallaxRef])
+    }, [parallaxRef, camera])
 
     return (
         <>
