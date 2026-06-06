@@ -1,5 +1,89 @@
+/* =================================================================== */
+/* DESIGN TOKENS (CSS Variables - Single Source of Truth)
+/* =================================================================== */
+
+:root {
+  /* --- Brand & Skin Accent Tokens (Default Magenta) --- */
+  --color-accent: #ee6192;
+
+  /* --- Base Palette & System Colors --- */
+  --color-bg-dark: #111111;
+  --color-bg-light: #ffffff;
+  
+  --color-text-dark-primary: #ffffff;
+  --color-text-dark-secondary: #eeeeee;
+  --color-text-light-primary: #666666;
+  --color-text-light-secondary: #777777;
+
+  --color-border-dark: #252525;
+  --color-border-light: #dddddd;
+
+  --color-glass-bg: rgba(1, 1, 1, 0.1);
+  --color-overlay: rgba(0, 0, 0, 0.25);
+  --color-bg-3d: #001e0f;
+  --color-cursor-dot: rgba(255, 0, 255, 0.3);
+
+  /* --- Typography: Font Families --- */
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Noto Serif TC', 'Open Sans', 'Poppins', sans-serif;
+  --font-mono: 'monospace';
+
+  /* --- Typography: Font Sizes --- */
+  --font-size-xs: 12px;
+  --font-size-sm: 15px;      /* Base body text */
+  --font-size-md: 20px;      /* Section subtitles */
+  --font-size-lg: 26px;      /* Subsection headers */
+  --font-size-xl: 40px;      /* Large section titles */
+  --font-size-xxl: 56px;     /* Core headings */
+  --font-size-hero: 60px;    /* Landing home title */
+  --font-size-watermark: 110px; /* Floating watermark */
+
+  /* --- Typography: Font Weights --- */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* --- Spacing Scale --- */
+  --spacing-xs: 10px;
+  --spacing-sm: 20px;
+  --spacing-md: 30px;
+  --spacing-lg: 40px;
+  --spacing-xl: 60px;
+  --spacing-xxl: 80px;
+
+  /* --- Border Radius Scale --- */
+  --border-radius-sm: 5px;   /* Box stats */
+  --border-radius-md: 15px;  /* Landing bg box */
+  --border-radius-lg: 26px;  /* Buttons */
+  --border-radius-xl: 30px;  /* Timeline panels, navbar */
+
+  /* --- Animation & Transition Timings --- */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.8s;
+  --transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- Dynamic Theme Accent Colors --- */
+[data-theme="red"]         { --color-accent: #ff1e38; }
+[data-theme="blue"]        { --color-accent: #4169e1; }
+[data-theme="blueviolet"]  { --color-accent: #8a2be2; }
+[data-theme="goldenrod"]   { --color-accent: #daa520; }
+[data-theme="green"]       { --color-accent: #2ecc71; }
+[data-theme="orange"]      { --color-accent: #fa5b0f; }
+[data-theme="purple"]      { --color-accent: #9b59b6; }
+[data-theme="yellow"]      { --color-accent: #f1c40f; }
+[data-theme="yellowgreen"] { --color-accent: #9acd32; }
+
+/* =================================================================== */
+/* GLOBAL RESET & STYLES
+/* =================================================================== */
+
 body {
-    font-family: Montserrat, sans-serif;
+    font-family: var(--font-primary);
     cursor: none;
 }
 
@@ -13,8 +97,8 @@ body {
   top: 0;
   pointer-events: none;
   z-index: 9999;
-  background: rgba(255,0,255,0.3);
+  background: var(--color-cursor-dot);
   mix-blend-mode: difference;
   transform: translate(-50%, -50%);
-  transition: background 0.2s, width 0.2s, height 0.2s;
+  transition: background var(--transition-fast), width var(--transition-fast), height var(--transition-fast);
 }
