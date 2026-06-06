@@ -13,14 +13,14 @@ const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px;
-    background: rgba(0.1, 0.1, 0.1, 0);
+    padding: var(--spacing-xl);
+    background: var(--color-glass-bg);
 `
 
 const Title = styled.h1`
     align-self: center;
-    font-size: 40px;
-    padding-bottom: 40px;
+    font-size: var(--font-size-xl);
+    padding-bottom: var(--spacing-lg);
 `
 
 const Item = styled.div`

@@ -4,7 +4,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
 import "./styles/circle.css"
 //import "./styles/style.css"
-import "./styles/skins/magenta.css"
 import "./styles/global.css"
 import App from "./App"
 

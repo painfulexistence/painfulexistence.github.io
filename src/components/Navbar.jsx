@@ -18,10 +18,11 @@ const Container = styled.div`
 const Link = styled.div`
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-weight: bolder;
-    color: #BBBBBB;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-dark-secondary);
+    transition: color var(--transition-fast) var(--transition-ease);
     :hover {
-        color: #FFFFFF;
+        color: var(--color-text-dark-primary);
     }
     cursor: pointer;
 `

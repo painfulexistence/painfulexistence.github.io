@@ -7,18 +7,18 @@ const Section = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px;
+    padding: var(--spacing-xl);
 `
 
 const Title = styled.h1`
     align-self: center;
-    font-size: 40px;
+    font-size: var(--font-size-xl);
 `
 
 const SelfIntro = styled.div`
-    font-size: medium;
+    font-size: var(--font-size-sm);
     h1 {
-        font-size: xx-large;
+        font-size: var(--font-size-lg);
     }
 `
 

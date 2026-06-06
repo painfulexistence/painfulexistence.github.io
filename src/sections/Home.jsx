@@ -18,14 +18,14 @@ const Title = styled.div`
     align-items: center;
 
     h1 {
-        font-size: 60px;
-        font-weight: 800;
+        font-size: var(--font-size-hero);
+        font-weight: var(--font-weight-extrabold);
         margin: 0;
     }
 
     h2 {
-        font-size: 20px;
-        font-weight: 600;
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-semibold);
         margin: 0;
     }
 `

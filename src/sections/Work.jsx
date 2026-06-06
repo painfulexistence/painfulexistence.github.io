@@ -8,18 +8,18 @@ const Section = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px;
+    padding: var(--spacing-xl);
 `
 
 const Title = styled.h1`
     align-self: center;
-    font-size: 40px;
+    font-size: var(--font-size-xl);
 `
 
 const Timeline = styled.div`
     padding: 2.5% 5% 2.5% 5%;
-    border-radius: 30px;
-    background: rgba(1, 1, 1, 0.1);
+    border-radius: var(--border-radius-xl);
+    background: var(--color-glass-bg);
     backdrop-filter: saturate(120%) blur(20px);
 `
 
