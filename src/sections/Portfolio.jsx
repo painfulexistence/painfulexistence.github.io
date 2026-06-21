@@ -109,7 +109,7 @@ const InfoCardInner = styled.div`
     padding: 28px;
     transition: border-color 250ms;
 
-    .${InfoCard}:hover & {
+    .info-card:hover & {
         border-color: rgba(0, 229, 255, 0.18);
     }
 `
