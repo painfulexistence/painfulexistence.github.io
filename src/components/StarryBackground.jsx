@@ -53,9 +53,9 @@ export default function StarryBackground() {
 
     return (
         <>
-            {/* Warm obsidian background — slight brown undertone */}
-            <color attach="background" args={['#0a0908']} />
-            <fog attach="fog" args={['#0a0908', 50, 500]} />
+            {/* Obsidian black — Goth-Tech palette */}
+            <color attach="background" args={['#020202']} />
+            <fog attach="fog" args={['#020202', 50, 500]} />
 
             <points ref={starsRef} geometry={starsGeometry} material={starsMaterial} />
 

@@ -13,128 +13,117 @@ const Section = styled.section`
     padding: 80px 10vw;
 `
 
-const SectionTitle = styled.h2`
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+const SectionHeader = styled.div`
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 48px;
+
+    &::before { content: '// '; }
+`
+
+const LogBlock = styled.div`
+    background: rgba(9, 9, 11, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    max-width: 640px;
+`
+
+const LogInner = styled.div`
+    background: var(--surface-2);
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    margin: 5px;
+    border-radius: 2px;
+    padding: 24px 28px;
+`
+
+const LogPrompt = styled.div`
+    font-family: var(--font-mono);
+    font-size: 9px;
     color: var(--text-muted);
-    margin-bottom: 64px;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    opacity: 0.6;
 `
 
-const Timeline = styled.div`
-    position: relative;
-    padding-left: 28px;
-
-    &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 8px;
-        bottom: 8px;
-        width: 2px;
-        background: var(--line);
-    }
-`
-
-const TimelineEntry = styled.div`
-    position: relative;
-    margin-bottom: 56px;
+const Entry = styled.div`
+    margin-bottom: 28px;
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(12px);
 
-    &:last-child {
-        margin-bottom: 0;
-    }
-
-    &::before {
-        content: '';
-        position: absolute;
-        left: -34px;
-        top: 7px;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--accent-blue);
-        box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.15);
-    }
+    &:last-child { margin-bottom: 0; }
 `
 
-const Company = styled.h3`
+const Company = styled.div`
     font-family: var(--font-display);
-    font-size: clamp(18px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 20px);
     font-weight: 600;
     color: var(--text-primary);
+    margin-bottom: 3px;
+`
+
+const Meta = styled.div`
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
     margin-bottom: 4px;
 `
 
 const DateRange = styled.span`
     font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    display: block;
-    margin-bottom: 6px;
+    font-size: 10px;
+    color: var(--accent);
     letter-spacing: 0.04em;
 `
 
-const Role = styled.p`
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--text-muted);
-    font-weight: 400;
-`
-
-const CVFooter = styled.div`
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid var(--line);
+const Role = styled.span`
     font-family: var(--font-body);
     font-size: 13px;
     color: var(--text-muted);
+`
+
+const Divider = styled.div`
+    height: 1px;
+    background: rgba(255,255,255,0.04);
+    margin: 20px 0;
+`
+
+const CVLine = styled.div`
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    margin-top: 32px;
 
     a {
         color: var(--text-muted);
         text-decoration: none;
-        position: relative;
         transition: color 150ms;
+        position: relative;
 
         &::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: -1px;
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--accent-blue);
-            transition: width 250ms cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--accent);
+            transition: width 250ms cubic-bezier(0.16,1,0.3,1);
         }
 
-        &:hover {
-            color: var(--text-primary);
-        }
-        &:hover::after {
-            width: 100%;
-        }
+        &:hover { color: var(--accent); }
+        &:hover::after { width: 100%; }
     }
 `
 
 const ENTRIES = [
-    {
-        company: 'LyraVR',
-        date: '2021 – 2022',
-        role: 'VR Gameplay Programmer',
-    },
-    {
-        company: 'Clubon',
-        date: '2019 – 2021',
-        role: 'Full-Stack Web Developer & Game Programmer',
-    },
-    {
-        company: 'Digital Learning Center, NTU',
-        date: '2018 – 2019',
-        role: 'Full-Stack Web Developer',
-    },
+    { company: 'LyraVR',                             date: '2021 – 2022', role: 'VR Gameplay Programmer' },
+    { company: 'Clubon',                             date: '2019 – 2021', role: 'Full-Stack Web Developer & Game Programmer' },
+    { company: 'Digital Learning Center, NTU',       date: '2018 – 2019', role: 'Full-Stack Web Developer' },
 ]
 
 export default function Work() {
@@ -144,39 +133,37 @@ export default function Work() {
         entriesRef.current.forEach((el, i) => {
             if (!el) return
             gsap.to(el, {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                ease: 'power2.out',
-                delay: i * 0.08,
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
+                opacity: 1, y: 0, duration: 0.45, ease: 'power2.out',
+                delay: i * 0.1,
+                scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
             })
         })
     }, [])
 
     return (
         <Section id="work">
-            <SectionTitle>Work</SectionTitle>
-            <Timeline>
-                {ENTRIES.map((entry, i) => (
-                    <TimelineEntry
-                        key={entry.company}
-                        ref={el => { entriesRef.current[i] = el }}
-                    >
-                        <Company>{entry.company}</Company>
-                        <DateRange>{entry.date}</DateRange>
-                        <Role>{entry.role}</Role>
-                    </TimelineEntry>
-                ))}
-            </Timeline>
-            <CVFooter>
-                Full project history compiled in CV —{' '}
-                <a href="/cv/loic-chen-cv.pdf" download>Download PDF ↗</a>
-            </CVFooter>
+            <SectionHeader>SYS_LOG // COMMERCIAL_HIGHLIGHTS</SectionHeader>
+            <LogBlock>
+                <LogInner>
+                    <LogPrompt>$ cat work_history.log</LogPrompt>
+                    {ENTRIES.map((entry, i) => (
+                        <div key={entry.company}>
+                            <Entry ref={el => { entriesRef.current[i] = el }}>
+                                <Company>{entry.company}</Company>
+                                <Meta>
+                                    <DateRange>{entry.date}</DateRange>
+                                    <Role>{entry.role}</Role>
+                                </Meta>
+                            </Entry>
+                            {i < ENTRIES.length - 1 && <Divider />}
+                        </div>
+                    ))}
+                </LogInner>
+            </LogBlock>
+            <CVLine>
+                // full project history compiled →{' '}
+                <a href="/cv/loic-chen-cv.pdf" download>DOWNLOAD_CV.pdf ↗</a>
+            </CVLine>
         </Section>
     )
 }
