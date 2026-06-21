@@ -1,40 +1,67 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
-const Cursor = () => {
-	const [cursorTarget, setCursorTarget] = useState({ x: 0, y: 0 })
-    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-    const animationRef = useRef(null)
+export default function Cursor() {
+    // Dot snaps to pointer exactly
+    const [dot, setDot] = useState({ x: 0, y: 0 })
+    // Ring follows with lerp lag
+    const ringPos = useRef({ x: 0, y: 0 })
+    const target = useRef({ x: 0, y: 0 })
+    const rafRef = useRef(null)
+    const ringRef = useRef(null)
+    const [isHovering, setIsHovering] = useState(false)
+    const [isClicking, setIsClicking] = useState(false)
 
-	useEffect(() => {
-		const handleMouseMove = (e) => {
-			setCursorTarget({ x: e.clientX, y: e.clientY })
-		}
-		window.addEventListener('mousemove', handleMouseMove)
-		return () => {
-			window.removeEventListener('mousemove', handleMouseMove)
-		}
-	}, [])
+    const animate = useCallback(() => {
+        // lerp factor 0.12 — visibly lags behind dot
+        ringPos.current.x += (target.current.x - ringPos.current.x) * 0.12
+        ringPos.current.y += (target.current.y - ringPos.current.y) * 0.12
+        if (ringRef.current) {
+            ringRef.current.style.left = ringPos.current.x + 'px'
+            ringRef.current.style.top  = ringPos.current.y + 'px'
+        }
+        rafRef.current = requestAnimationFrame(animate)
+    }, [])
 
     useEffect(() => {
-        const animate = () => {
-            setCursorPosition(prev => {
-                const x = prev.x + (cursorTarget.x - prev.x) * 0.2
-                const y = prev.y + (cursorTarget.y - prev.y) * 0.2
-                return { x, y }
-            })
-            animationRef.current = requestAnimationFrame(animate)
+        const onMove = (e) => {
+            target.current = { x: e.clientX, y: e.clientY }
+            setDot({ x: e.clientX, y: e.clientY })
         }
-        animationRef.current = requestAnimationFrame(animate)
+        const onMouseOver = (e) => {
+            const el = e.target.closest('a, button, [data-cursor-hover]')
+            setIsHovering(!!el)
+        }
+        const onDown = () => setIsClicking(true)
+        const onUp   = () => setIsClicking(false)
+
+        window.addEventListener('mousemove', onMove)
+        window.addEventListener('mouseover', onMouseOver)
+        window.addEventListener('mousedown', onDown)
+        window.addEventListener('mouseup',   onUp)
+        rafRef.current = requestAnimationFrame(animate)
+
         return () => {
-            if (animationRef.current) {
-                cancelAnimationFrame(animationRef.current)
-            }
+            window.removeEventListener('mousemove', onMove)
+            window.removeEventListener('mouseover', onMouseOver)
+            window.removeEventListener('mousedown', onDown)
+            window.removeEventListener('mouseup',   onUp)
+            if (rafRef.current) cancelAnimationFrame(rafRef.current)
         }
-    }, [cursorTarget])
+    }, [animate])
 
-	return (
-		<div className="cursor-dot" style={{ left: cursorPosition.x, top: cursorPosition.y }} />
-	)
+    const ringClass = [
+        'cursor-ring',
+        isHovering ? 'is-hovering' : '',
+        isClicking ? 'is-clicking' : '',
+    ].filter(Boolean).join(' ')
+
+    return (
+        <>
+            <div
+                className="cursor-dot"
+                style={{ left: dot.x, top: dot.y }}
+            />
+            <div ref={ringRef} className={ringClass} />
+        </>
+    )
 }
-
-export default Cursor
