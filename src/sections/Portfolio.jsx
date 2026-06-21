@@ -215,6 +215,31 @@ const MarqueeText = styled.span`
     padding-right: 48px;
 `
 
+const SectionHeader = styled.div`
+    padding: 120px 10vw 0;
+
+    .label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+
+    h2 {
+        font-family: var(--font-display);
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 800;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+    }
+
+    @media (max-width: 767px) {
+        padding: 80px 6vw 0;
+    }
+`
+
 const TICKER = 'VULKAN 1.3 // COMPUTE SHADERS // PBR RENDERING // CASCADED SHADOW MAPS // BINDLESS TEXTURES // RENDER GRAPHS // EMSCRIPTEN // WASM // '
 
 function EngineCard({ name, tech, features, href, imgSrc, imgAlt, reverse }) {
@@ -298,6 +323,10 @@ function EngineCard({ name, tech, features, href, imgSrc, imgAlt, reverse }) {
 export default function Portfolio() {
     return (
         <div id="engines">
+            <SectionHeader>
+                <p className="label">// 01 · MY WORKS</p>
+                <h2>My Works</h2>
+            </SectionHeader>
             <EngineCard
                 name="Atmospheric"
                 tech="C++ · OpenGL 4.6 · Bullet Physics · Emscripten"

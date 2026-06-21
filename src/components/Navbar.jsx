@@ -21,10 +21,7 @@ export default function Navbar() {
                     <button onClick={() => scrollTo('engines')}>[01] ENGINES</button>
                 </li>
                 <li>
-                    <button onClick={() => scrollTo('work')}>[02] WORK</button>
-                </li>
-                <li>
-                    <Link to="/about">[03] ABOUT</Link>
+                    <Link to="/about">[02] ABOUT</Link>
                 </li>
                 <li>
                     <a href="/cv/loic-chen-cv.pdf" download>[CV] ↗</a>
