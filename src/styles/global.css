@@ -1,104 +1,311 @@
-/* =================================================================== */
-/* DESIGN TOKENS (CSS Variables - Single Source of Truth)
-/* =================================================================== */
+/* ============================================================
+   MATERIAL DARK — Design Tokens
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
-  /* --- Brand & Skin Accent Tokens (Default Magenta) --- */
-  --color-accent: #ee6192;
+  /* Colors */
+  --bg:            #0a0908;
+  --surface-1:     #131210;
+  --surface-2:     #1a1816;
+  --accent-blue:   #4cc9f0;
+  --accent-purple: #6b5b9e;
+  --accent-bronze: #b8934a;
+  --text-primary:  #e8e4df;
+  --text-muted:    #6b665f;
+  --line:          rgba(232, 228, 223, 0.08);
 
-  /* --- Base Palette & System Colors --- */
-  --color-bg-dark: #111111;
-  --color-bg-light: #ffffff;
-  
-  --color-text-dark-primary: #ffffff;
-  --color-text-dark-secondary: #eeeeee;
-  --color-text-light-primary: #666666;
-  --color-text-light-secondary: #777777;
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Manrope', sans-serif;
+  --font-mono:    'Space Mono', monospace;
 
-  --color-border-dark: #252525;
-  --color-border-light: #dddddd;
+  /* Spacing */
+  --spacing-xs:  10px;
+  --spacing-sm:  20px;
+  --spacing-md:  32px;
+  --spacing-lg:  64px;
+  --spacing-xl:  96px;
 
-  --color-glass-bg: rgba(1, 1, 1, 0.1);
-  --color-overlay: rgba(0, 0, 0, 0.25);
-  --color-bg-3d: #001e0f;
-  --color-cursor-dot: rgba(255, 0, 255, 0.3);
-
-  /* --- Typography: Font Families --- */
-  --font-primary: 'Montserrat', sans-serif;
-  --font-secondary: 'Noto Serif TC', 'Open Sans', 'Poppins', sans-serif;
-  --font-mono: 'monospace';
-
-  /* --- Typography: Font Sizes --- */
-  --font-size-xs: 12px;
-  --font-size-sm: 15px;      /* Base body text */
-  --font-size-md: 20px;      /* Section subtitles */
-  --font-size-lg: 26px;      /* Subsection headers */
-  --font-size-xl: 40px;      /* Large section titles */
-  --font-size-xxl: 56px;     /* Core headings */
-  --font-size-hero: 60px;    /* Landing home title */
-  --font-size-watermark: 110px; /* Floating watermark */
-
-  /* --- Typography: Font Weights --- */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  --font-weight-black: 900;
-
-  /* --- Spacing Scale --- */
-  --spacing-xs: 10px;
-  --spacing-sm: 20px;
-  --spacing-md: 30px;
-  --spacing-lg: 40px;
-  --spacing-xl: 60px;
-  --spacing-xxl: 80px;
-
-  /* --- Border Radius Scale --- */
-  --border-radius-sm: 5px;   /* Box stats */
-  --border-radius-md: 15px;  /* Landing bg box */
-  --border-radius-lg: 26px;  /* Buttons */
-  --border-radius-xl: 30px;  /* Timeline panels, navbar */
-
-  /* --- Animation & Transition Timings --- */
-  --transition-fast: 0.2s;
-  --transition-normal: 0.3s;
-  --transition-slow: 0.8s;
-  --transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast:   150ms;
+  --t-normal: 250ms;
+  --t-slow:   700ms;
 }
 
-/* --- Dynamic Theme Accent Colors --- */
-[data-theme="red"]         { --color-accent: #ff1e38; }
-[data-theme="blue"]        { --color-accent: #4169e1; }
-[data-theme="blueviolet"]  { --color-accent: #8a2be2; }
-[data-theme="goldenrod"]   { --color-accent: #daa520; }
-[data-theme="green"]       { --color-accent: #2ecc71; }
-[data-theme="orange"]      { --color-accent: #fa5b0f; }
-[data-theme="purple"]      { --color-accent: #9b59b6; }
-[data-theme="yellow"]      { --color-accent: #f1c40f; }
-[data-theme="yellowgreen"] { --color-accent: #9acd32; }
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 
-/* =================================================================== */
-/* GLOBAL RESET & STYLES
-/* =================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
-    font-family: var(--font-primary);
-    cursor: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--bg);
+  line-height: 1.6;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ============================================================
+   CURSOR
+   ============================================================ */
+
 .cursor-dot {
-  --size: 40px;
-  width: var(--size);
-  height: var(--size);
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
+  background: var(--accent-blue);
   position: fixed;
-  left: 0;
-  top: 0;
   pointer-events: none;
   z-index: 9999;
-  background: var(--color-cursor-dot);
-  mix-blend-mode: difference;
   transform: translate(-50%, -50%);
-  transition: background var(--transition-fast), width var(--transition-fast), height var(--transition-fast);
+  transition: width var(--t-fast), height var(--t-fast), background var(--t-fast);
+}
+
+.cursor-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(76, 201, 240, 0.4);
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width var(--t-normal), height var(--t-normal), border-color var(--t-normal);
+}
+
+.cursor-ring.is-hovering {
+  width: 16px;
+  height: 16px;
+  border-color: rgba(76, 201, 240, 0.8);
+}
+
+.cursor-ring.is-clicking {
+  width: 38px;
+  height: 38px;
+}
+
+/* ============================================================
+   SCANLINE & VIGNETTE (pointer-events: none overlays)
+   ============================================================ */
+
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.015) 2px,
+    rgba(0, 0, 0, 0.015) 4px
+  );
+}
+
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 51;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+/* ============================================================
+   FILM GRAIN CANVAS
+   ============================================================ */
+
+#film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 52;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 9, 8, 0.7);
+  border-bottom: 1px solid var(--line);
+  z-index: 100;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform var(--t-normal) var(--ease-out),
+              opacity var(--t-normal) var(--ease-out);
+}
+
+.navbar.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navbar-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.navbar-links a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--t-fast);
+  position: relative;
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-blue);
+  transition: width var(--t-normal) var(--ease-out);
+}
+
+.navbar-links a:hover {
+  color: var(--text-primary);
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+.navbar-links a.active {
+  color: var(--accent-blue);
+}
+
+/* CV download link */
+.navbar-cv {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--t-fast);
+  cursor: pointer;
+}
+
+.navbar-cv:hover {
+  color: var(--accent-blue);
+}
+
+/* Mobile navbar: always-visible bottom bar */
+@media (max-width: 767px) {
+  .navbar {
+    top: auto;
+    bottom: 0;
+    transform: translateY(0);
+    opacity: 1;
+    border-top: 1px solid var(--line);
+    border-bottom: none;
+    height: 48px;
+  }
+  .navbar.visible {
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   SECTION SHARED
+   ============================================================ */
+
+.section-full {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* ============================================================
+   TEXT LINKS (underline-grow style)
+   ============================================================ */
+
+.text-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color var(--t-fast);
+  cursor: pointer;
+}
+
+.text-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-blue);
+  transition: width var(--t-normal) var(--ease-out);
+}
+
+.text-link:hover {
+  color: var(--text-primary);
+}
+
+.text-link:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scanline-overlay,
+  #film-grain {
+    display: none;
+  }
 }
