@@ -34,6 +34,48 @@
   --t-fast:   150ms;
   --t-normal: 250ms;
   --t-slow:   700ms;
+
+  /* ── Type Scale ────────────────────────────────────────────
+     Named after their primary role, not an arbitrary number.
+     Components should always reference these, never hardcode. */
+
+  /* Display / Hero — large identity headings */
+  --fs-hero:          clamp(52px, 8vw, 96px);
+  --fw-hero:          800;
+  --ls-hero:          0.02em;
+  --lh-hero:          0.95;
+
+  /* Section large title */
+  --fs-section-title: clamp(36px, 5vw, 64px);
+
+  /* Section headings (h2 level) */
+  --fs-heading:       clamp(28px, 3.5vw, 48px);
+  --fw-heading:       700;
+  --ls-heading:       -0.02em;
+  --lh-heading:       1.1;
+
+  /* Sub-section / entry title (h3, company names) */
+  --fs-subheading:  clamp(16px, 2vw, 20px);
+  --fw-subheading:  600;
+  --ls-subheading:  0em;
+  --lh-subheading:  1.25;
+
+  /* Body text */
+  --fs-body:        15px;
+  --fw-body:        400;
+  --ls-body:        0.01em;
+  --lh-body:        1.6;
+
+  /* Small body / captions */
+  --fs-body-sm:     13px;
+  --lh-body-sm:     1.5;
+
+  /* Monospace labels / metadata / dates */
+  --fs-mono-md:     11px;
+  --fs-mono-sm:     10px;
+  --fs-mono-xs:     9px;
+  --ls-mono:        0.06em;
+  --ls-mono-wide:   0.14em;
 }
 
 /* ============================================================
@@ -137,25 +179,27 @@ body {
 }
 
 /* ============================================================
-   NAVBAR — Right-side floating capsule
+   NAVBAR — Top horizontal bar
    ============================================================ */
 
 .navbar {
   position: fixed;
-  top: 50%;
-  right: 24px;
-  transform: translateY(-50%);
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
-  padding: 16px 14px;
-  background: rgba(9, 9, 11, 0.75);
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  padding: 0 32px;
+  height: 52px;
+  background: rgba(9, 9, 11, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--line);
-  border-radius: 20px;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
 }
 
 .navbar-logo {
@@ -166,18 +210,18 @@ body {
   text-decoration: none;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-  width: 100%;
-  text-align: right;
+  padding-bottom: 0;
+  border-bottom: none;
+  width: auto;
+  text-align: left;
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 100%;
+  flex-direction: row;
+  gap: 24px;
+  width: auto;
 }
 
 .navbar-links a,
@@ -189,9 +233,9 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  text-align: right;
+  text-align: left;
   display: block;
-  width: 100%;
+  width: auto;
   padding: 4px 0;
   letter-spacing: 0.06em;
   transition: color var(--t-fast);
@@ -207,9 +251,9 @@ body {
 }
 
 .navbar-status {
-  padding-top: 10px;
-  border-top: 1px solid var(--line);
-  width: 100%;
+  padding-top: 0;
+  border-top: none;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -250,6 +294,7 @@ body {
     border-top: 1px solid var(--line);
     padding: 10px 20px;
     gap: 0;
+    height: auto;
   }
   .navbar-logo {
     border-bottom: none;
