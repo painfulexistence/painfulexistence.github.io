@@ -161,7 +161,6 @@ const MarqueeWrap = styled.div`
     border-bottom: 1px solid var(--line);
     padding: 10px 0;
     background: var(--surface-1);
-    margin-top: 80px;
 `
 
 const MarqueeTrack = styled.div`
@@ -188,9 +187,12 @@ const TeaserSection = styled.section`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 16px;
+    padding: 120px 10vw 0;
+
+    @media (max-width: 767px) {
+        padding: 80px 6vw 0;
+    }
 `
 
 const TeaserText = styled.p`
@@ -200,7 +202,6 @@ const TeaserText = styled.p`
     color: var(--text-primary);
     opacity: 0;
     letter-spacing: var(--ls-hero);
-    text-align: center;
 `
 
 const TICKER = 'VULKAN 1.3 // COMPUTE SHADERS // PBR RENDERING // CASCADED SHADOW MAPS // BINDLESS TEXTURES // RENDER GRAPHS // EMSCRIPTEN // WASM // '
@@ -309,19 +310,20 @@ export default function Portfolio() {
                 </CardGrid>
             </WorksSection>
 
+            <TeaserSection id="devverse">
+                <SectionHeader>
+                    <p className="label">// 02 · DEVVERSE</p>
+                    <h2>DevVerse</h2>
+                </SectionHeader>
+                <TeaserText ref={teaserRef}>Something Big is coming soon.</TeaserText>
+            </TeaserSection>
+
             <MarqueeWrap>
                 <MarqueeTrack>
                     <MarqueeText>{TICKER}</MarqueeText>
                     <MarqueeText>{TICKER}</MarqueeText>
                 </MarqueeTrack>
             </MarqueeWrap>
-
-            <TeaserSection id="devverse">
-                <SectionHeader>
-                    <p className="label">// 02 · DEVVERSE</p>
-                </SectionHeader>
-                <TeaserText ref={teaserRef}>Something Big is coming soon.</TeaserText>
-            </TeaserSection>
         </div>
     )
 }
