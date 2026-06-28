@@ -10,6 +10,7 @@ import Cursor from './components/Cursor'
 import StarryBackground from './components/StarryBackground'
 import Home from './sections/Home'
 import Portfolio from './sections/Portfolio'
+import AboutSection from './sections/About'
 import About from './pages/About'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -71,6 +72,7 @@ const LandingPage = () => {
             {/* Content */}
             <Home />
             <Portfolio />
+            <AboutSection />
         </>
     )
 }
