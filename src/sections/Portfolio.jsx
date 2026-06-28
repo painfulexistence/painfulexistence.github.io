@@ -187,8 +187,10 @@ const MarqueeText = styled.span`
 const TeaserSection = styled.section`
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 16px;
 `
 
 const TeaserText = styled.p`
@@ -314,7 +316,10 @@ export default function Portfolio() {
                 </MarqueeTrack>
             </MarqueeWrap>
 
-            <TeaserSection>
+            <TeaserSection id="devverse">
+                <SectionHeader>
+                    <p className="label">// 02 · DEVVERSE</p>
+                </SectionHeader>
                 <TeaserText ref={teaserRef}>Something Big is coming soon.</TeaserText>
             </TeaserSection>
         </div>

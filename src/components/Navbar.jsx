@@ -14,7 +14,7 @@ export default function Navbar() {
                     <button onClick={() => scrollTo('engines')}>[01] MY WORKS</button>
                 </li>
                 <li>
-                    <a href="https://devlog.example.com" target="_blank" rel="noopener noreferrer">[02] DEVLOG</a>
+                    <button onClick={() => scrollTo('devverse')}>[02] DEVVERSE</button>
                 </li>
                 <li>
                     <Link to="/about">[03] ABOUT</Link>
