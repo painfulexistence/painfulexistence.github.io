@@ -158,29 +158,31 @@ const SiteLink = styled.a`
 const ENGINES = [
     {
         name: 'Atmospheric',
-        tech: 'C++ · OpenGL 4.6 · Bullet Physics · Emscripten',
+        tech: 'C++ · OpenGL 4.1 · WebGL 2.0 · Emscripten',
         features: [
-            'PBR material pipeline (Cook-Torrance BRDF)',
-            'Cascaded shadow maps & omnidirectional point shadows',
-            'Post-process stack: HDR, Bloom, SSAO, FXAA',
-            'Cross-platform: Native + WebAssembly (Emscripten)',
-            'Entity-Component System architecture',
+            'Cross-platform: Windows / macOS / Linux / Emscripten / iOS / Android',
+            '2D + 3D PBR forward renderer, with post-process stack: HDR tonemapping, Bloom, Chromatic Aberration',
+            'Component-based architecture',
+            'Built-in job system',
+            'Physics engine (Bullet) integration',
+            'UI framework (RmlUI) integration'
         ],
         href: 'https://verse.lucidum.dev/atmospheric/',
-        videoSrc: '/videos/atmospheric.mp4',
+        videoSrc: 'https://verse.lucidum.dev/videos/DEMO_voxel-world.mov',
     },
     {
         name: 'Project Vapor',
-        tech: 'C++20 · Vulkan 1.3 · WASM',
+        tech: 'C++20 · Metal · Vulkan',
         features: [
-            'Render graph with auto-barrier synchronization',
-            'Bindless texture array & GPU-driven rendering',
-            'Custom Vulkan memory allocator integration',
-            'Thread-safe ring buffer for GPU uploads',
-            'Ray-traced shadow maps',
+            'Modern 3D PBR forward renderer with Tile-based Light Culling',
+            'ECS architecture',
+            'Ray-traced shadow maps for main directional light',
+            'Task scheduler (enkiTS) integration',
+            'Physics engine (Jolt) integration',
+            'UI framework (RmlUI) integration'
         ],
         href: 'https://verse.lucidum.dev/vapor/',
-        videoSrc: '/videos/vapor.mp4',
+        videoSrc: 'https://verse.lucidum.dev/videos/DEMO_raytraced-shadow-and-tiled-light-culling.mov',
     },
 ]
 
@@ -210,7 +212,7 @@ export default function Portfolio() {
         <div id="engines">
             <Section>
                 <SectionHeader>
-                    <p className="label">// 01 · MY WORKS</p>
+                    <p className="label">// 01 · </p>
                     <h2>My Works</h2>
                 </SectionHeader>
 

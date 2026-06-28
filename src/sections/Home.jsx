@@ -43,7 +43,7 @@ const HeroRole = styled.p`
     font-family: var(--font-body);
     font-size: var(--fs-body);
     font-weight: var(--fw-body);
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-bottom: 40px;
     opacity: 0;
     letter-spacing: var(--ls-body);
@@ -76,7 +76,7 @@ const ScrollHint = styled.div`
     }
 `
 
-const ROLE_TEXT = 'Render & Engine Engineer'
+const ROLE_TEXT = 'Engine & Graphics Programmer'
 
 export default function Home() {
     const ruleRef    = useRef(null)
@@ -130,17 +130,7 @@ export default function Home() {
                 <HeroRule ref={ruleRef} />
                 <HeroRole ref={roleRef} />
                 <HeroCtas ref={ctasRef}>
-                    <a
-                        href="#engines"
-                        className="text-link"
-                        onClick={(e) => {
-                            e.preventDefault()
-                            document.getElementById('engines')?.scrollIntoView({ behavior: 'smooth' })
-                        }}
-                    >
-                        View Engines ↓
-                    </a>
-                    <a href="/cv/loic-chen-cv.pdf" download className="text-link">
+                    <a href="https://verse.lucidum.dev/cv/CV_painfulexistence.pdf" download className="text-link">
                         Download CV ↗
                     </a>
                 </HeroCtas>

@@ -37,6 +37,23 @@ const SectionHeader = styled.div`
     }
 `
 
+const Avatar = styled.div`
+    width: 180px;
+    height: 220px;
+    border-radius: 12px;
+    border: 1px solid var(--accent);
+    background: var(--surface-1);
+    margin-bottom: 40px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+`
+
 const Body = styled.div`
     max-width: 560px;
     opacity: 0;
@@ -79,14 +96,15 @@ export default function About() {
     return (
         <Section id="about">
             <SectionHeader>
-                <p className="label">// 03 · ABOUT</p>
+                <p className="label">// 03 · </p>
                 <h2>About</h2>
             </SectionHeader>
+            <Avatar>
+                <img src="/profile.jpg" alt="Loïc Chen" />
+            </Avatar>
             <Body ref={bodyRef}>
-                <p>I build game engines from scratch — not because I have to, but because understanding how a renderer thinks is the only way I know how to really learn graphics programming.</p>
-                <p>Outside of C++ and shaders, you'll find me in oversized dark layers, with blue hair and nails I spend too long on. The precision I put into those things is the same precision I put into code.</p>
-                <p>Right now I'm deep in a Vulkan renderer — thinking about render graphs, GPU memory, and how to make light behave.</p>
-                <p>I play Soulsborne games badly and Metroidvanias well.</p>
+                <p>In 2019, I lost myself in Hyrule Kingdom, The Legend of Zelda: Breath of the Wild for 400+ hours. I have determined to explore the arcane realms of engine and graphics programming since then.</p>
+                <p>My secret to wander the abyss for so long, you asked? Well. Every morning I begin the clock with a gentle sip of citrus cream ice-drip dark liquid — my black magic to transform my existential crisis into productivity.</p>
             </Body>
         </Section>
     )

@@ -7,9 +7,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Section = styled.section`
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
     padding: 120px 10vw 0;
 
     @media (max-width: 767px) {
@@ -75,7 +75,7 @@ const MarqueeText = styled.span`
     padding-right: 48px;
 `
 
-const TICKER = 'VULKAN 1.3 // COMPUTE SHADERS // PBR RENDERING // CASCADED SHADOW MAPS // BINDLESS TEXTURES // RENDER GRAPHS // EMSCRIPTEN // WASM // '
+const TICKER = '// METAL // VULKAN // OPENGL // WEBGL // WEBGPU // COMPUTE SHADERS // PBR RENDERING // GPU-DRIVEN RENDERING // WEBASSEMBLY // CROSS-PLATFORM'
 
 export default function Teaser() {
     const textRef = useRef(null)
@@ -99,10 +99,10 @@ export default function Teaser() {
     }, [])
 
     return (
-        <>
-            <Section id="devverse">
+        <div id="devverse">
+            <Section >
                 <SectionHeader>
-                    <p className="label">// 02 · DEVVERSE</p>
+                    <p className="label">// 02 · </p>
                     <h2>DevVerse</h2>
                 </SectionHeader>
                 <TeaserText ref={textRef}>Something Big is coming soon.</TeaserText>
@@ -114,6 +114,6 @@ export default function Teaser() {
                     <MarqueeText>{TICKER}</MarqueeText>
                 </MarqueeTrack>
             </MarqueeWrap>
-        </>
+        </div>
     )
 }
