@@ -1,104 +1,422 @@
-/* =================================================================== */
-/* DESIGN TOKENS (CSS Variables - Single Source of Truth)
-/* =================================================================== */
+/* ============================================================
+   GOTH-TECH — Design Tokens
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
-  /* --- Brand & Skin Accent Tokens (Default Magenta) --- */
-  --color-accent: #ee6192;
+  /* Colors */
+  --bg:            #020202;
+  --surface-1:     #09090b;
+  --surface-2:     #0a0a0c;
+  --surface-3:     #111116;
+  --accent:        #00e5ff;
+  --accent-dim:    rgba(0, 229, 255, 0.08);
+  --text-primary:  #e8e8e8;
+  --text-muted:    #666680;
+  --line:          rgba(255, 255, 255, 0.05);
+  --line-accent:   rgba(0, 229, 255, 0.2);
 
-  /* --- Base Palette & System Colors --- */
-  --color-bg-dark: #111111;
-  --color-bg-light: #ffffff;
-  
-  --color-text-dark-primary: #ffffff;
-  --color-text-dark-secondary: #eeeeee;
-  --color-text-light-primary: #666666;
-  --color-text-light-secondary: #777777;
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+  --font-mono:    'Space Mono', monospace;
 
-  --color-border-dark: #252525;
-  --color-border-light: #dddddd;
+  /* Spacing */
+  --spacing-xs:  10px;
+  --spacing-sm:  20px;
+  --spacing-md:  32px;
+  --spacing-lg:  64px;
+  --spacing-xl:  96px;
 
-  --color-glass-bg: rgba(1, 1, 1, 0.1);
-  --color-overlay: rgba(0, 0, 0, 0.25);
-  --color-bg-3d: #001e0f;
-  --color-cursor-dot: rgba(255, 0, 255, 0.3);
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast:   150ms;
+  --t-normal: 250ms;
+  --t-slow:   700ms;
 
-  /* --- Typography: Font Families --- */
-  --font-primary: 'Montserrat', sans-serif;
-  --font-secondary: 'Noto Serif TC', 'Open Sans', 'Poppins', sans-serif;
-  --font-mono: 'monospace';
+  /* ── Type Scale ────────────────────────────────────────────
+     Named after their primary role, not an arbitrary number.
+     Components should always reference these, never hardcode. */
 
-  /* --- Typography: Font Sizes --- */
-  --font-size-xs: 12px;
-  --font-size-sm: 15px;      /* Base body text */
-  --font-size-md: 20px;      /* Section subtitles */
-  --font-size-lg: 26px;      /* Subsection headers */
-  --font-size-xl: 40px;      /* Large section titles */
-  --font-size-xxl: 56px;     /* Core headings */
-  --font-size-hero: 60px;    /* Landing home title */
-  --font-size-watermark: 110px; /* Floating watermark */
+  /* Display / Hero — large identity headings */
+  --fs-hero:          clamp(72px, 11vw, 140px);
+  --fw-hero:          800;
+  --ls-hero:          0.02em;
+  --lh-hero:          0.9;
 
-  /* --- Typography: Font Weights --- */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  --font-weight-black: 900;
+  /* Section large title */
+  --fs-section-title: clamp(36px, 5vw, 64px);
 
-  /* --- Spacing Scale --- */
-  --spacing-xs: 10px;
-  --spacing-sm: 20px;
-  --spacing-md: 30px;
-  --spacing-lg: 40px;
-  --spacing-xl: 60px;
-  --spacing-xxl: 80px;
+  /* Section headings (h2 level) */
+  --fs-heading:       clamp(28px, 3.5vw, 48px);
+  --fw-heading:       700;
+  --ls-heading:       -0.02em;
+  --lh-heading:       1.1;
 
-  /* --- Border Radius Scale --- */
-  --border-radius-sm: 5px;   /* Box stats */
-  --border-radius-md: 15px;  /* Landing bg box */
-  --border-radius-lg: 26px;  /* Buttons */
-  --border-radius-xl: 30px;  /* Timeline panels, navbar */
+  /* Sub-section / entry title (h3, company names) */
+  --fs-subheading:  clamp(16px, 2vw, 20px);
+  --fw-subheading:  600;
+  --ls-subheading:  0em;
+  --lh-subheading:  1.25;
 
-  /* --- Animation & Transition Timings --- */
-  --transition-fast: 0.2s;
-  --transition-normal: 0.3s;
-  --transition-slow: 0.8s;
-  --transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Body text */
+  --fs-body:        15px;
+  --fw-body:        400;
+  --ls-body:        0.01em;
+  --lh-body:        1.6;
+
+  /* Small body / captions */
+  --fs-body-sm:     13px;
+  --lh-body-sm:     1.5;
+
+  /* Monospace labels / metadata / dates */
+  --fs-mono-md:     11px;
+  --fs-mono-sm:     10px;
+  --fs-mono-xs:     9px;
+  --ls-mono:        0.06em;
+  --ls-mono-wide:   0.14em;
 }
 
-/* --- Dynamic Theme Accent Colors --- */
-[data-theme="red"]         { --color-accent: #ff1e38; }
-[data-theme="blue"]        { --color-accent: #4169e1; }
-[data-theme="blueviolet"]  { --color-accent: #8a2be2; }
-[data-theme="goldenrod"]   { --color-accent: #daa520; }
-[data-theme="green"]       { --color-accent: #2ecc71; }
-[data-theme="orange"]      { --color-accent: #fa5b0f; }
-[data-theme="purple"]      { --color-accent: #9b59b6; }
-[data-theme="yellow"]      { --color-accent: #f1c40f; }
-[data-theme="yellowgreen"] { --color-accent: #9acd32; }
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 
-/* =================================================================== */
-/* GLOBAL RESET & STYLES
-/* =================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
-    font-family: var(--font-primary);
-    cursor: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--bg);
+  line-height: 1.6;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ============================================================
+   CURSOR
+   ============================================================ */
+
 .cursor-dot {
-  --size: 40px;
-  width: var(--size);
-  height: var(--size);
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
+  background: var(--accent);
   position: fixed;
-  left: 0;
-  top: 0;
   pointer-events: none;
   z-index: 9999;
-  background: var(--color-cursor-dot);
-  mix-blend-mode: difference;
   transform: translate(-50%, -50%);
-  transition: background var(--transition-fast), width var(--transition-fast), height var(--transition-fast);
+  transition: width var(--t-fast), height var(--t-fast);
+}
+
+.cursor-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width var(--t-normal), height var(--t-normal), border-color var(--t-normal);
+}
+
+.cursor-ring.is-hovering {
+  width: 16px;
+  height: 16px;
+  border-color: rgba(0, 229, 255, 0.8);
+}
+
+.cursor-ring.is-clicking {
+  width: 38px;
+  height: 38px;
+}
+
+/* ============================================================
+   OVERLAYS
+   ============================================================ */
+
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.02) 2px,
+    rgba(0, 0, 0, 0.02) 4px
+  );
+}
+
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 51;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
+}
+
+#film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 52;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================
+   NAVBAR — Top horizontal bar
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  padding: 0 32px;
+  height: 52px;
+  background: rgba(9, 9, 11, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.navbar-logo {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-bottom: 0;
+  border-bottom: none;
+  width: auto;
+  text-align: left;
+  transition: color var(--t-fast);
+}
+
+.navbar-logo:hover {
+  color: var(--accent);
+}
+
+.navbar-cv {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: color var(--t-fast);
+}
+
+.navbar-cv:hover {
+  color: var(--accent);
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: auto;
+}
+
+.navbar-links a,
+.navbar-links button {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  display: block;
+  width: auto;
+  padding: 4px 0;
+  letter-spacing: 0.06em;
+  transition: color var(--t-fast);
+}
+
+.navbar-links a:hover,
+.navbar-links button:hover {
+  color: var(--accent);
+}
+
+.navbar-links a.active {
+  color: var(--accent);
+}
+
+.navbar-status {
+  padding-top: 0;
+  border-top: none;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.navbar-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px #4ade80; }
+  50%       { opacity: 0.4; box-shadow: none; }
+}
+
+/* Mobile: top horizontal bar */
+@media (max-width: 767px) {
+  .navbar {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 20px;
+    gap: 0;
+    height: auto;
+  }
+  .navbar-logo {
+    border-bottom: none;
+    padding-bottom: 0;
+    width: auto;
+  }
+  .navbar-links {
+    flex-direction: row;
+    gap: 16px;
+    width: auto;
+  }
+  .navbar-links a,
+  .navbar-links button {
+    text-align: left;
+    width: auto;
+  }
+  .navbar-status {
+    border-top: none;
+    padding-top: 0;
+    width: auto;
+  }
+}
+
+/* ============================================================
+   DOUBLE-BEZEL CARD SYSTEM
+   ============================================================ */
+
+.card-outer {
+  background: rgba(9, 9, 11, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  transition: border-color var(--t-normal);
+}
+
+.card-outer:hover {
+  border-color: rgba(0, 229, 255, 0.15);
+}
+
+.card-inner {
+  background: var(--surface-2);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  margin: 6px;
+  border-radius: 2px;
+  transition: border-color var(--t-normal);
+}
+
+.card-outer:hover .card-inner {
+  border-color: rgba(0, 229, 255, 0.2);
+}
+
+/* ============================================================
+   TEXT LINKS
+   ============================================================ */
+
+.text-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color var(--t-fast);
+  cursor: pointer;
+}
+
+.text-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width var(--t-normal) var(--ease-out);
+}
+
+.text-link:hover {
+  color: var(--text-primary);
+}
+
+.text-link:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   SECTION SHARED
+   ============================================================ */
+
+.section-full {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scanline-overlay,
+  #film-grain { display: none; }
 }

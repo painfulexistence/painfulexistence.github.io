@@ -1,49 +1,28 @@
-import styled from "@emotion/styled"
-import StraightIcon from '@mui/icons-material/Straight'
-
-const Container = styled.div`
-    position: fixed;
-    height: 100vh;
-    top: 0;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px;
-`
-
-const Link = styled.div`
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-dark-secondary);
-    transition: color var(--transition-fast) var(--transition-ease);
-    :hover {
-        color: var(--color-text-dark-primary);
+export default function Navbar() {
+    const scrollTo = (id) => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     }
-    cursor: pointer;
-`
 
-const NavBar = (props) => {
     return (
-        <Container>
-            <Link onClick={() => props.onNavigate("Home")}>
-                <StraightIcon />
-            </Link>
-            <Link onClick={() => props.onNavigate("Portfolio")}>
-                Projects
-            </Link>
-            <Link onClick={() => props.onNavigate("Experiences")}>
-                Experiences
-            </Link>
-            <Link onClick={() => props.onNavigate("About")}>
-                About
-            </Link>
-        </Container>
+        <nav className="navbar">
+            <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="navbar-logo">LOÏC CHEN</a>
+
+            <ul className="navbar-links">
+                <li>
+                    <button onClick={() => scrollTo('engines')}>[01] MY WORKS</button>
+                </li>
+                <li>
+                    <button onClick={() => scrollTo('devverse')}>[02] DEVVERSE</button>
+                </li>
+                <li>
+                    <button onClick={() => scrollTo('about')}>[03] ABOUT</button>
+                </li>
+            </ul>
+
+            <div className="navbar-status">
+                <span className="navbar-status-dot" />
+                <a href="https://verse.lucidum.dev/cv/CV_painfulexistence.pdf" download className="navbar-cv">[CV]</a>
+            </div>
+        </nav>
     )
 }
-
-export default NavBar

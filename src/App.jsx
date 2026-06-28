@@ -1,28 +1,21 @@
-import { useRef, useEffect } from "react"
-import styled from "@emotion/styled"
-import { Canvas } from "@react-three/fiber"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef, useCallback } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Canvas } from '@react-three/fiber'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import styled from '@emotion/styled'
 
-import NavBar from "./components/Navbar"
-import Home from "./sections/Home"
-import Work from "./sections/Work"
-import Portfolio from "./sections/Portfolio"
-import About from "./sections/About"
-import StarryBackground from "./components/StarryBackground"
-import AnimatedSection from "./components/AnimatedSection"
-import Cursor from "./components/Cursor"
+import Navbar from './components/Navbar'
+import Cursor from './components/Cursor'
+import StarryBackground from './components/StarryBackground'
+import Home from './sections/Home'
+import Portfolio from './sections/Portfolio'
+import Teaser from './sections/Teaser'
+import About from './sections/About'
 
-// 註冊 GSAP 插件
 gsap.registerPlugin(ScrollTrigger)
 
-const AppContainer = styled.div`
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-`
-
-const ThreeJSContainer = styled.div`
+const BgCanvas = styled.div`
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -31,128 +24,68 @@ const ThreeJSContainer = styled.div`
     z-index: -1;
 `
 
-const TexturedOverlay = styled.div`
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background-color: var(--color-overlay);
-    pointer-events: none; /* 讓點擊穿透 */
-`
+const LandingPage = () => {
+    const grainRef = useRef(null)
 
-const ContentContainer = styled.div`
-    position: relative;
-    z-index: 2;
-    background: transparent;
-`
-
-const Section = styled.section`
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-sm);
-`
-
-const App = () => {
-    const appRef = useRef(null)
-    const sectionsRef = useRef([])
-
-    useEffect(() => {
-        // 重新整理 GSAP 觸發器
-        ScrollTrigger.refresh()
-
-        return () => {
-            // 清除所有的 ScrollTrigger 實例防止記憶體洩漏
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    const animateGrain = useCallback(() => {
+        const canvas = grainRef.current
+        if (!canvas) return
+        const ctx = canvas.getContext('2d')
+        canvas.width  = window.innerWidth
+        canvas.height = window.innerHeight
+        const imageData = ctx.createImageData(canvas.width, canvas.height)
+        const { data } = imageData
+        for (let i = 0; i < data.length; i += 4) {
+            const v = Math.random() * 255
+            data[i]     = v
+            data[i + 1] = v
+            data[i + 2] = v
+            data[i + 3] = 255
         }
+        ctx.putImageData(imageData, 0, 0)
+        requestAnimationFrame(animateGrain)
     }, [])
 
-    const handleNavigate = (sectionName) => {
-        // 將導覽名稱映射為索引值
-        const sectionMap = {
-            "Home": 0,
-            "Portfolio": 1,
-            "Experiences": 2,
-            "About": 3
-        }
-        
-        const index = sectionMap[sectionName]
-        const targetSection = sectionsRef.current[index]
-        
-        if (targetSection) {
-            targetSection.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            })
-        }
-    }
-
-    const addSectionRef = (el, index) => {
-        sectionsRef.current[index] = el
-    }
+    useEffect(() => {
+        ScrollTrigger.refresh()
+        animateGrain()
+        return () => ScrollTrigger.getAll().forEach(t => t.kill())
+    }, [animateGrain])
 
     return (
-        <AppContainer ref={appRef}>
-            {/* 3D 背景 */}
-            <ThreeJSContainer>
+        <>
+            {/* Fixed Three.js canvas — id reserved for future DevVerse iframe */}
+            <BgCanvas id="devverse-bg">
                 <Canvas
                     camera={{ position: [0, 0, 100], fov: 60 }}
                     gl={{ antialias: true, alpha: true }}
                 >
                     <StarryBackground />
                 </Canvas>
-                <TexturedOverlay />
-            </ThreeJSContainer>
+            </BgCanvas>
 
-            {/* 導覽列 */}
-            <NavBar onNavigate={handleNavigate} />
+            {/* Atmosphere overlays */}
+            <div className="scanline-overlay" />
+            <div className="vignette-overlay" />
+            <canvas id="film-grain" ref={grainRef} />
 
-            {/* 主要網頁內容區域 */}
-            <ContentContainer>
-                <AnimatedSection
-                    ref={(el) => addSectionRef(el, 0)}
-                    animationType="fadeIn"
-                >
-                    <Section>
-                        <Home />
-                    </Section>
-                </AnimatedSection>
-
-                <AnimatedSection
-                    ref={(el) => addSectionRef(el, 1)}
-                    animationType="slideInLeft"
-                >
-                    <Section>
-                        <Portfolio />
-                    </Section>
-                </AnimatedSection>
-
-                <AnimatedSection
-                    ref={(el) => addSectionRef(el, 2)}
-                    animationType="slideInRight"
-                >
-                    <Section>
-                        <Work />
-                    </Section>
-                </AnimatedSection>
-
-                <AnimatedSection
-                    ref={(el) => addSectionRef(el, 3)}
-                    animationType="scaleIn"
-                >
-                    <Section>
-                        <About />
-                    </Section>
-                </AnimatedSection>
-            </ContentContainer>
-
-            {/* 自訂游標 */}
-            <Cursor />
-        </AppContainer>
+            {/* Content */}
+            <Home />
+            <Portfolio />
+            <Teaser />
+            <About />
+        </>
     )
 }
 
-export default App
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Navbar />
+            <Cursor />
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}

@@ -4,95 +4,69 @@ import { OrbitControls } from '@react-three/drei'
 import { Bloom, ChromaticAberration, EffectComposer } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
-export default function StarryBackground({ parallaxRef }) {
+export default function StarryBackground() {
     const starsRef = useRef()
-    const controlsRef = useRef()
     const { camera } = useThree()
 
     const starsGeometry = useMemo(() => {
-        const geometry = new THREE.OctahedronGeometry(0.25, 0)
+        const geometry = new THREE.BufferGeometry()
         const positions = []
         const colors = []
-        const sizes = []
 
-        for (let i = 0; i < 4000; i++) {
+        // 2400 particles (40% reduction from 4000)
+        for (let i = 0; i < 2400; i++) {
             positions.push(
                 THREE.MathUtils.randFloatSpread(500),
                 THREE.MathUtils.randFloatSpread(500),
                 THREE.MathUtils.randFloatSpread(500)
             )
-
+            // Cyan-blue tint: hue ~0.54 (194° — matches #4cc9f0)
             const color = new THREE.Color()
-            color.setHSL(0.6, 0.8, THREE.MathUtils.randFloat(0.1, 1) * 5.0)
+            color.setHSL(0.54, 0.9, THREE.MathUtils.randFloat(0.1, 1) * 5.0)
             colors.push(color.r, color.g, color.b)
-
-            sizes.push(THREE.MathUtils.randFloat(0.1, 3))
         }
 
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
         geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3))
-        geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1))
-
         return geometry
     }, [])
 
-    const starsMaterial = useMemo(() => {
-        return new THREE.PointsMaterial({
-            size: 2,
-            sizeAttenuation: true,
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.8,
-            vertexColors: true
-        })
-    }, [])
-
-    useFrame((state) => {
-        if (starsRef.current) {
-            // starsRef.current.rotation.y += 0.0005
-            // starsRef.current.rotation.x += 0.0002
-        }
-        if (starsMaterial) {
-            // starsMaterial.uniforms.time.value = state.clock.elapsedTime
-        }
-    })
+    const starsMaterial = useMemo(() => new THREE.PointsMaterial({
+        size: 1.2,
+        sizeAttenuation: true,
+        transparent: true,
+        opacity: 0.6,
+        vertexColors: true,
+    }), [])
 
     useEffect(() => {
-        if (parallaxRef && parallaxRef.current) {
-            const container = parallaxRef.current.container.current
-            const handleParallaxScroll = () => {
-                camera.position.setZ(100 - 100 * (container.scrollTop / container.scrollHeight))
-            }
-            container.addEventListener('scroll', handleParallaxScroll, { passive: true })
-            return () => container.removeEventListener('scroll', handleParallaxScroll)
-        } else {
-            const handleWindowScroll = () => {
-                const scrollTop = window.scrollY
-                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
-                camera.position.setZ(100 - 100 * (scrollTop / Math.max(1, scrollHeight)))
-            }
-            window.addEventListener('scroll', handleWindowScroll, { passive: true })
-            handleWindowScroll() // run once initially
-            return () => window.removeEventListener('scroll', handleWindowScroll)
+        const handleScroll = () => {
+            const scrollTop = window.scrollY
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+            // Speed reduced 40%: camera moves less than original
+            camera.position.setZ(100 - 60 * (scrollTop / Math.max(1, scrollHeight)))
         }
-    }, [parallaxRef, camera])
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        handleScroll()
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [camera])
 
     return (
         <>
-            <color attach="background" args={['#001e0f']} />
-            <fog attach="fog" args={['#001e0f', 50, 500]} />
+            {/* Obsidian black — Goth-Tech palette */}
+            <color attach="background" args={['#020202']} />
+            <fog attach="fog" args={['#020202', 50, 500]} />
 
             <points ref={starsRef} geometry={starsGeometry} material={starsMaterial} />
 
-            <ambientLight intensity={0.1} />
+            <ambientLight intensity={0.05} />
 
             <OrbitControls
-                ref={controlsRef}
                 enableZoom={false}
                 enablePan={false}
                 enableRotate={true}
                 autoRotate={true}
-                autoRotateSpeed={0.1}
+                autoRotateSpeed={0.05}
             />
 
             <EffectComposer>

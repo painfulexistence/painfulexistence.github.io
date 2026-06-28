@@ -1,103 +1,250 @@
-import styled from "@emotion/styled"
-import Masonry from "@mui/lab/Masonry"
-import Project from "../components/Project"
-import imgAtmospheric from "../assets/images/atmospheric_2.png"
-import imgPlayReal from "../assets/images/playreal_2.png"
-import imgTheVictimsGame from "../assets/images/victims-game.png"
-import imgSymphony from "../assets/images/symphony.png"
-import imgMarkbook from "../assets/images/markbook_2.png"
-import imgOutOfTheAshes from "../assets/images/out-of-the-ashes.png"
+import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import styled from '@emotion/styled'
 
-const Section = styled.section`
-    height: 500vh;
-    display: flex;
-    flex-direction: column;
+gsap.registerPlugin(ScrollTrigger)
+
+const Section = styled.div`
+    padding: 120px 10vw 0;
+
+    @media (max-width: 767px) {
+        padding: 80px 6vw 0;
+    }
+`
+
+const SectionHeader = styled.div`
+    .label {
+        font-family: var(--font-mono);
+        font-size: var(--fs-mono-md);
+        color: var(--accent);
+        letter-spacing: var(--ls-mono-wide);
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+
+    h2 {
+        font-family: var(--font-display);
+        font-size: var(--fs-section-title);
+        font-weight: var(--fw-hero);
+        color: var(--text-primary);
+        letter-spacing: var(--ls-heading);
+        margin-bottom: 48px;
+    }
+`
+
+const CardGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+
+    @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+    }
+`
+
+const CardOuter = styled.div`
+    background: rgba(9, 9, 11, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    transition: border-color var(--t-normal);
+
+    &:hover {
+        border-color: rgba(0, 229, 255, 0.2);
+    }
+`
+
+const CardInner = styled.div`
+    background: var(--surface-2);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    margin: 6px;
+    border-radius: 2px;
+    overflow: hidden;
+    transition: border-color var(--t-normal);
+
+    .card-outer:hover & {
+        border-color: rgba(0, 229, 255, 0.18);
+    }
+`
+
+const CardVideo = styled.video`
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.5) brightness(0.85);
+`
+
+const CardBody = styled.div`
+    padding: 24px 24px 28px;
+`
+
+const AccentLine = styled.div`
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 18px;
+    border-radius: 1px;
+`
+
+const EngineName = styled.h2`
+    font-family: var(--font-display);
+    font-size: var(--fs-heading);
+    font-weight: var(--fw-heading);
+    line-height: var(--lh-heading);
+    color: var(--text-primary);
+    margin-bottom: 10px;
+`
+
+const TechLine = styled.p`
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-sm);
+    color: var(--text-muted);
+    letter-spacing: var(--ls-mono);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+`
+
+const FeatureList = styled.ul`
+    list-style: none;
+    margin-bottom: 24px;
+
+    li {
+        font-family: var(--font-body);
+        font-size: var(--fs-body-sm);
+        color: var(--text-muted);
+        margin-bottom: 7px;
+        padding-left: 14px;
+        position: relative;
+        line-height: var(--lh-body-sm);
+
+        &::before {
+            content: '//';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: var(--fs-mono-xs);
+            top: 1px;
+        }
+    }
+`
+
+const SiteLink = styled.a`
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-md);
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: var(--ls-mono);
+    text-transform: uppercase;
+    display: inline-flex;
     align-items: center;
-    padding: var(--spacing-xl);
-    background: var(--color-glass-bg);
+    gap: 6px;
+    cursor: pointer;
+    transition: color var(--t-fast);
+
+    .arrow {
+        display: inline-block;
+        transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &:hover { color: var(--accent); }
+    &:hover .arrow { transform: translateX(4px); }
 `
 
-const Title = styled.h1`
-    align-self: center;
-    font-size: var(--font-size-xl);
-    padding-bottom: var(--spacing-lg);
-`
+const ENGINES = [
+    {
+        name: 'Atmospheric',
+        tech: 'C++ · OpenGL 4.1 · WebGL 2.0 · Emscripten',
+        features: [
+            'Cross-platform: Windows / macOS / Linux / Emscripten / iOS / Android',
+            '2D + 3D PBR forward renderer, with post-process stack: HDR tonemapping, Bloom, Chromatic Aberration',
+            'Component-based architecture',
+            'Built-in job system',
+            'Physics engine (Bullet) integration',
+            'UI framework (RmlUI) integration'
+        ],
+        href: 'https://verse.lucidum.dev/atmospheric/',
+        videoSrc: 'https://verse.lucidum.dev/videos/DEMO_voxel-world.mov',
+    },
+    {
+        name: 'Project Vapor',
+        tech: 'C++20 · Metal · Vulkan',
+        features: [
+            'Modern 3D PBR forward renderer with Tile-based Light Culling',
+            'ECS architecture',
+            'Ray-traced shadow maps for main directional light',
+            'Task scheduler (enkiTS) integration',
+            'Physics engine (Jolt) integration',
+            'UI framework (RmlUI) integration'
+        ],
+        href: 'https://verse.lucidum.dev/vapor/',
+        videoSrc: 'https://verse.lucidum.dev/videos/DEMO_raytraced-shadow-and-tiled-light-culling.mov',
+    },
+]
 
-const Item = styled.div`
+export default function Portfolio() {
+    const gridRef = useRef(null)
 
-`
+    useEffect(() => {
+        const grid = gridRef.current
+        if (!grid) return
 
-const Portfolio = () => {
+        gsap.to(grid, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: grid,
+                start: 'top 75%',
+                toggleActions: 'play none none none',
+            },
+        })
+
+        return () => ScrollTrigger.getAll().forEach(t => t.kill())
+    }, [])
+
     return (
-        <Section>
-            <Title>Projects</Title>
-            <Masonry columns={{xs: 1, sm: 2}} spacing={{xs: 2, sm: 4, lg: 12}}>
-                <Item key={0}>
-                    <Project
-                        title="Out of The Ashes"
-                        subheader="Godot"
-                        imgSrc={imgOutOfTheAshes}
-                        imgAlt="Out of The Ashes screenshot"
-                        content="A 3D adventure RPG in a medieval setting made with Godot Engine. I was responsible for visual effects and AI programming."
-                    />
-                </Item>
-                <Item key={1}>
-                    <Project
-                        title="Unannouced Fishing Game"
-                        subheader="Unity"
-                        content="A VR fishing game made with Unity Engine. I was responsible for gameplay programming and custom shaders."
-                    />
-                </Item>
-                <Item key={2}>
-                    <Project
-                        title="Atmospheric 3D"
-                        subheader="C++, OpenGL"
-                        imgSrc={imgAtmospheric}
-                        imgAlt="Atmospheric Engine screenshot"
-                        content={
-                            <p>My own cross-platform 3D game engine written in C++. The engine was built with OpenGL and Bullet Physics, featuring HDR rendering, PBR materials, point shadows, directional shadows, and a handful of post-processing effects. I was responsible for the whole project.</p>
-                        }
-                    />
-                </Item>
-                <Item key={3}>
-                    <Project
-                        title="PlayReal Engine"
-                        subheader="ReactJS, Ruby on Rails"
-                        imgSrc={imgPlayReal}
-                        imgAlt="PlayReal Engine website screenshot"
-                        content={
-                            <p>A web-based narrative game engine which empowers game designers to create and edit   mobile web narrative games conveniently. The engine was built with Ruby on Rails, ReactJS, and PostgreSQL. I was responsible for all technical aspects of this project.</p>
-                        }
-                        website="https://playreal.com.tw/"
-                    />
-                </Item>
-                <Item key={4}>
-                    <Project
-                        title="The Victims' Game"
-                        subheader="ReactJS"
-                        imgSrc={imgTheVictimsGame}
-                        imgAlt="The Victims' Game title screen"
-                        content={
-                            <>
-                                <p>A mobile web detective puzzle ARG featuring an identically-titled Netflix series crossover. The game was made with ReactJS and PixiJS. I was responsible for all technical aspects of the game.</p>
-                                <h4>Video:</h4>
-                                <iframe className="youtube-video" src="https://www.youtube.com/embed/Z5Ly98kLj4o" allowFullScreen></iframe>
-                            </>
-                        }
-                    />
-                </Item>
-                <Item key={5}>
-                    <Project
-                        title="Symphony"
-                        subheader="ReactJS, Ruby on Rails"
-                        imgSrc={imgSymphony}
-                        imgAlt="Symphony PDF annotator screenshot"
-                        content="A web-based collaborative PDF annotator built with Ruby on Rails, ReactJS, and PostgreSQL. I was responsible for all technical aspects of the project."
-                    />
-                </Item>
-            </Masonry>
-        </Section>
+        <div id="engines">
+            <Section>
+                <SectionHeader>
+                    <p className="label">// 01 · </p>
+                    <h2>My Works</h2>
+                </SectionHeader>
+
+                <CardGrid ref={gridRef}>
+                    {ENGINES.map((engine) => (
+                        <CardOuter key={engine.name} className="card-outer">
+                            <CardInner className="card-inner">
+                                <CardVideo
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    src={engine.videoSrc}
+                                />
+                                <CardBody>
+                                    <AccentLine />
+                                    <EngineName>{engine.name}</EngineName>
+                                    <TechLine>{engine.tech}</TechLine>
+                                    <FeatureList>
+                                        {engine.features.map((f) => (
+                                            <li key={f}>{f}</li>
+                                        ))}
+                                    </FeatureList>
+                                    <SiteLink href={engine.href} target="_blank" rel="noopener noreferrer">
+                                        OPEN ENGINE SITE <span className="arrow">→</span>
+                                    </SiteLink>
+                                </CardBody>
+                            </CardInner>
+                        </CardOuter>
+                    ))}
+                </CardGrid>
+            </Section>
+        </div>
     )
 }
-
-export default Portfolio
