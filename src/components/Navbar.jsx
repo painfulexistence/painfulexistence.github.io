@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 export default function Navbar() {
     const scrollTo = (id) => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -7,7 +5,7 @@ export default function Navbar() {
 
     return (
         <nav className="navbar">
-            <Link to="/" className="navbar-logo">LOÏC CHEN</Link>
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="navbar-logo">LOÏC CHEN</button>
 
             <ul className="navbar-links">
                 <li>
