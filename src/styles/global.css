@@ -40,10 +40,10 @@
      Components should always reference these, never hardcode. */
 
   /* Display / Hero — large identity headings */
-  --fs-hero:          clamp(52px, 8vw, 96px);
+  --fs-hero:          clamp(72px, 11vw, 140px);
   --fw-hero:          800;
   --ls-hero:          0.02em;
-  --lh-hero:          0.95;
+  --lh-hero:          0.9;
 
   /* Section large title */
   --fs-section-title: clamp(36px, 5vw, 64px);
