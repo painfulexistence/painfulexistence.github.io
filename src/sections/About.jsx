@@ -96,7 +96,7 @@ export default function About() {
     return (
         <Section id="about">
             <SectionHeader>
-                <p className="label">// 03 · </p>
+                <p className="label">// 03 · About</p>
                 <h2>About</h2>
             </SectionHeader>
             <Avatar>

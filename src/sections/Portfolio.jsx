@@ -212,7 +212,7 @@ export default function Portfolio() {
         <div id="engines">
             <Section>
                 <SectionHeader>
-                    <p className="label">// 01 · </p>
+                    <p className="label">// 01 · My Works</p>
                     <h2>My Works</h2>
                 </SectionHeader>
 

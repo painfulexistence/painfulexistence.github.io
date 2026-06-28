@@ -102,7 +102,7 @@ export default function Teaser() {
         <div id="devverse">
             <Section >
                 <SectionHeader>
-                    <p className="label">// 02 · </p>
+                    <p className="label">// 02 · DevVerse</p>
                     <h2>DevVerse</h2>
                 </SectionHeader>
                 <TeaserText ref={textRef}>SOMETHING BIG IS COMING SOON.</TeaserText>
