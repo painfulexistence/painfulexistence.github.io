@@ -1,7 +1,7 @@
 import { useEffect, useRef, useMemo } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import { Bloom, EffectComposer } from '@react-three/postprocessing'
+import { Bloom, ChromaticAberration, EffectComposer } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
 export default function StarryBackground() {
@@ -22,7 +22,7 @@ export default function StarryBackground() {
             )
             // Cyan-blue tint: hue ~0.54 (194° — matches #4cc9f0)
             const color = new THREE.Color()
-            color.setHSL(0.54, 0.7, THREE.MathUtils.randFloat(0.3, 0.7))
+            color.setHSL(0.54, 0.9, THREE.MathUtils.randFloat(0.1, 1) * 5.0)
             colors.push(color.r, color.g, color.b)
         }
 
@@ -71,9 +71,12 @@ export default function StarryBackground() {
 
             <EffectComposer>
                 <Bloom
-                    intensity={1.2}
-                    luminanceThreshold={0.5}
-                    luminanceSmoothing={0.9}
+                    intensity={2.0}
+                    luminanceThreshold={0.4}
+                    luminanceSmoothing={0.95}
+                />
+                <ChromaticAberration
+                    offset={new THREE.Vector2(0.0005, 0.0005)}
                 />
             </EffectComposer>
         </>
