@@ -105,7 +105,7 @@ export default function Teaser() {
                     <p className="label">// 02 · </p>
                     <h2>DevVerse</h2>
                 </SectionHeader>
-                <TeaserText ref={textRef}>Something Big is coming soon.</TeaserText>
+                <TeaserText ref={textRef}>SOMETHING BIG IS COMING SOON.</TeaserText>
             </Section>
 
             <MarqueeWrap>
