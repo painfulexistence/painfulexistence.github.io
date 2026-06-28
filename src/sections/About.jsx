@@ -54,7 +54,7 @@ const Body = styled.div`
     }
 `
 
-export default function AboutSection() {
+export default function About() {
     const bodyRef = useRef(null)
 
     useEffect(() => {

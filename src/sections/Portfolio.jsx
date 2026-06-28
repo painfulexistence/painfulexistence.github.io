@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const WorksSection = styled.div`
+const Section = styled.div`
     padding: 120px 10vw 0;
 
     @media (max-width: 767px) {
@@ -155,57 +155,6 @@ const SiteLink = styled.a`
     &:hover .arrow { transform: translateX(4px); }
 `
 
-const MarqueeWrap = styled.div`
-    overflow: hidden;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 10px 0;
-    background: var(--surface-1);
-`
-
-const MarqueeTrack = styled.div`
-    display: flex;
-    white-space: nowrap;
-    animation: marquee 28s linear infinite;
-
-    @keyframes marquee {
-        from { transform: translateX(0); }
-        to   { transform: translateX(-50%); }
-    }
-`
-
-const MarqueeText = styled.span`
-    font-family: var(--font-mono);
-    font-size: var(--fs-mono-sm);
-    color: var(--text-muted);
-    letter-spacing: var(--ls-mono);
-    text-transform: uppercase;
-    padding-right: 48px;
-`
-
-const TeaserSection = styled.section`
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 120px 10vw 0;
-
-    @media (max-width: 767px) {
-        padding: 80px 6vw 0;
-    }
-`
-
-const TeaserText = styled.p`
-    font-family: var(--font-display);
-    font-size: clamp(36px, 6vw, 80px);
-    font-weight: 800;
-    color: var(--text-primary);
-    opacity: 0;
-    letter-spacing: var(--ls-hero);
-`
-
-const TICKER = 'VULKAN 1.3 // COMPUTE SHADERS // PBR RENDERING // CASCADED SHADOW MAPS // BINDLESS TEXTURES // RENDER GRAPHS // EMSCRIPTEN // WASM // '
-
 const ENGINES = [
     {
         name: 'Atmospheric',
@@ -236,8 +185,7 @@ const ENGINES = [
 ]
 
 export default function Portfolio() {
-    const gridRef   = useRef(null)
-    const teaserRef = useRef(null)
+    const gridRef = useRef(null)
 
     useEffect(() => {
         const grid = gridRef.current
@@ -255,26 +203,12 @@ export default function Portfolio() {
             },
         })
 
-        const teaser = teaserRef.current
-        if (teaser) {
-            gsap.to(teaser, {
-                opacity: 0.12,
-                duration: 0.8,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: teaser,
-                    start: 'top 75%',
-                    toggleActions: 'play none none none',
-                },
-            })
-        }
-
         return () => ScrollTrigger.getAll().forEach(t => t.kill())
     }, [])
 
     return (
         <div id="engines">
-            <WorksSection>
+            <Section>
                 <SectionHeader>
                     <p className="label">// 01 · MY WORKS</p>
                     <h2>My Works</h2>
@@ -308,22 +242,7 @@ export default function Portfolio() {
                         </CardOuter>
                     ))}
                 </CardGrid>
-            </WorksSection>
-
-            <TeaserSection id="devverse">
-                <SectionHeader>
-                    <p className="label">// 02 · DEVVERSE</p>
-                    <h2>DevVerse</h2>
-                </SectionHeader>
-                <TeaserText ref={teaserRef}>Something Big is coming soon.</TeaserText>
-            </TeaserSection>
-
-            <MarqueeWrap>
-                <MarqueeTrack>
-                    <MarqueeText>{TICKER}</MarqueeText>
-                    <MarqueeText>{TICKER}</MarqueeText>
-                </MarqueeTrack>
-            </MarqueeWrap>
+            </Section>
         </div>
     )
 }

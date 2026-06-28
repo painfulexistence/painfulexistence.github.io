@@ -10,8 +10,8 @@ import Cursor from './components/Cursor'
 import StarryBackground from './components/StarryBackground'
 import Home from './sections/Home'
 import Portfolio from './sections/Portfolio'
-import AboutSection from './sections/About'
-import About from './pages/About'
+import Teaser from './sections/Teaser'
+import About from './sections/About'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -72,7 +72,8 @@ const LandingPage = () => {
             {/* Content */}
             <Home />
             <Portfolio />
-            <AboutSection />
+            <Teaser />
+            <About />
         </>
     )
 }
@@ -83,8 +84,7 @@ export default function App() {
             <Navbar />
             <Cursor />
             <Routes>
-                <Route path="/"      element={<LandingPage />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/" element={<LandingPage />} />
             </Routes>
         </BrowserRouter>
     )
