@@ -15,8 +15,8 @@ const Section = styled.section`
 
 const SectionHeader = styled.div`
     font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
+    font-size: var(--fs-mono-sm);
+    letter-spacing: var(--ls-mono-wide);
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 48px;
@@ -42,9 +42,9 @@ const LogInner = styled.div`
 
 const LogPrompt = styled.div`
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: var(--fs-mono-xs);
     color: var(--text-muted);
-    letter-spacing: 0.1em;
+    letter-spacing: var(--ls-mono);
     margin-bottom: 20px;
     opacity: 0.6;
 `
@@ -59,8 +59,9 @@ const Entry = styled.div`
 
 const Company = styled.div`
     font-family: var(--font-display);
-    font-size: clamp(16px, 2vw, 20px);
-    font-weight: 600;
+    font-size: var(--fs-subheading);
+    font-weight: var(--fw-subheading);
+    line-height: var(--lh-subheading);
     color: var(--text-primary);
     margin-bottom: 3px;
 `
@@ -74,14 +75,14 @@ const Meta = styled.div`
 
 const DateRange = styled.span`
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--fs-mono-sm);
     color: var(--accent);
-    letter-spacing: 0.04em;
+    letter-spacing: var(--ls-mono);
 `
 
 const Role = styled.span`
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: var(--fs-body-sm);
     color: var(--text-muted);
 `
 
@@ -93,9 +94,9 @@ const Divider = styled.div`
 
 const CVLine = styled.div`
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--fs-mono-sm);
     color: var(--text-muted);
-    letter-spacing: 0.06em;
+    letter-spacing: var(--ls-mono);
     margin-top: 32px;
 
     a {

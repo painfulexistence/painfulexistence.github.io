@@ -26,11 +26,41 @@ Inspired by `gpt-taste` and `high-end-visual-design` principles. The aesthetic r
 
 ### Typography
 
-| Role | Font | Notes |
+| Role | Font | CSS Variable | Notes |
+|---|---|---|---|
+| Body | Plus Jakarta Sans | `--font-body` | Primary readable font |
+| Display / hero | Syne (wide) | `--font-display` | Avant-garde headings |
+| Code / telemetry | Space Mono | `--font-mono` | Compiler logs, HUD data, nav labels |
+
+### Type Scale
+
+All font sizes, weights, letter-spacings, and line-heights are defined as CSS custom properties in `global.css`. **Components must reference these tokens — never hardcode values.**
+
+| Token | Value | Usage |
 |---|---|---|
-| Body | Plus Jakarta Sans | Primary readable font |
-| Display / hero | Syne (wide) | Avant-garde headings |
-| Code / telemetry | Space Mono | Compiler logs, HUD data, nav labels |
+| `--fs-hero` | `clamp(44px, 7vw, 88px)` | Hero name (LOÏC CHEN), portfolio section h2 |
+| `--fw-hero` | `800` | Hero / section display weight |
+| `--ls-hero` | `0.02em` | Wide display letter-spacing |
+| `--lh-hero` | `0.95` | Tight line-height for stacked display type |
+| `--fs-heading` | `clamp(28px, 3.5vw, 48px)` | Engine card titles (h2 within cards) |
+| `--fw-heading` | `700` | Section heading weight |
+| `--ls-heading` | `-0.02em` | Tighter heading tracking |
+| `--lh-heading` | `1.1` | Heading line-height |
+| `--fs-subheading` | `clamp(16px, 2vw, 20px)` | Company names in Work log |
+| `--fw-subheading` | `600` | Sub-heading weight |
+| `--ls-subheading` | `0em` | Neutral tracking |
+| `--lh-subheading` | `1.25` | Sub-heading line-height |
+| `--fs-body` | `15px` | Role tagline, body paragraphs |
+| `--fw-body` | `400` | Base weight |
+| `--ls-body` | `0.01em` | Slight tracking for readability |
+| `--lh-body` | `1.6` | Comfortable reading line-height |
+| `--fs-body-sm` | `13px` | Feature list items, role labels |
+| `--lh-body-sm` | `1.5` | Small body line-height |
+| `--fs-mono-md` | `11px` | Site links, section sub-labels |
+| `--fs-mono-sm` | `10px` | Nav items, scroll hint, date ranges |
+| `--fs-mono-xs` | `9px` | List bullet markers, prompt text |
+| `--ls-mono` | `0.06em` | Standard monospace tracking |
+| `--ls-mono-wide` | `0.14em` | Uppercase section headers (ALL CAPS labels) |
 
 ### Texture & Atmosphere
 
@@ -61,24 +91,21 @@ Inspired by `gpt-taste` and `high-end-visual-design` principles. The aesthetic r
 ### 1. Hero — Editorial Split
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│  [LEFT 55%]                    [RIGHT 45%]              │
-│                                                         │
-│  LOÏC CHEN                     ┌──────────────────┐    │
-│  (Syne, large)                 │ GPU TELEMETRY    │    │
-│                                │ Frame: 0.83ms    │    │
-│  Render & Engine Engineer      │ Tri: 2.4M        │    │
-│  ──────────────────────        │ Particles: 80k   │    │
-│  [Inline texture image         │ VULKAN: ●OK      │    │
-│   — dark mesh / shader grid]   └──────────────────┘    │
-│                                                         │
-│  [View Engines ↗]  [Download CV ↗]                     │
-└─────────────────────────────────────────────────────────┘
+┌──────────────────────────────────┐
+│  LOÏC CHEN                       │
+│  (Syne, --fs-hero, scramble FX)  │
+│                                  │
+│  Render & Engine Engineer        │
+│  ──────────────────────          │
+│                                  │
+│  [View Engines ↓]  [Download CV ↗]│
+└──────────────────────────────────┘
 ```
 
-- **Inline typography images**: generated "dark woven mesh" and "C++ shader wireframe vector" assets embedded directly into the heading treatment
-- **GPU telemetry panel**: right-side HUD displaying simulated Vulkan 1.3 render stats (frame time, triangle count, particle count, pipeline state)
-- **Button-in-button CTA**: arrow `↗` has its own circular frame; hover triggers micro spring-physics displacement
+- **ScrambleText** on LOÏC / CHEN: plays on mount, re-scrambles on hover
+- **GSAP typewriter** on role line: letters appear sequentially after name resolves
+- **Scroll hint**: monospace `scroll ↓` fades out on first scroll
+- ~~GPU telemetry panel removed~~ (was righthand HUD — removed as redundant)
 
 ### 2. Navbar — Right-Side Floating Capsule
 
