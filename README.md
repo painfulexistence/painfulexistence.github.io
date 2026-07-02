@@ -9,7 +9,7 @@
 
 ```bash
 bun install
-bun run start
+bun run dev
 bun run build
 ```
 
