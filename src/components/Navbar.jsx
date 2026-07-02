@@ -21,7 +21,7 @@ export default function Navbar() {
 
             <div className="navbar-status">
                 <span className="navbar-status-dot" />
-                <a href="https://verse.lucidum.dev/cv/CV_painfulexistence.pdf" download className="navbar-cv">[CV]</a>
+                <a href="/CV_Lucidum.pdf" download className="navbar-cv">[CV]</a>
             </div>
         </nav>
     )

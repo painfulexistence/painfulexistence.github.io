@@ -130,7 +130,7 @@ export default function Home() {
                 <HeroRule ref={ruleRef} />
                 <HeroRole ref={roleRef} />
                 <HeroCtas ref={ctasRef}>
-                    <a href="https://verse.lucidum.dev/cv/CV_painfulexistence.pdf" download className="text-link">
+                    <a href="/CV_Lucidum.pdf" download className="text-link">
                         Download CV ↗
                     </a>
                 </HeroCtas>
