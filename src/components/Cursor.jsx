@@ -13,11 +13,11 @@ export default function Cursor() {
 
     const animate = useCallback(() => {
         // lerp factor 0.12 — visibly lags behind dot
-        ringPos.current.x += (target.current.x - ringPos.current.x) * 0.12
-        ringPos.current.y += (target.current.y - ringPos.current.y) * 0.12
+        ringPos.current.x += (target.current.x - ringPos.current.x) * 0.5
+        ringPos.current.y += (target.current.y - ringPos.current.y) * 0.5
         if (ringRef.current) {
-            ringRef.current.style.left = ringPos.current.x + 'px'
-            ringRef.current.style.top  = ringPos.current.y + 'px'
+            ringRef.current.style.left = `${ringPos.current.x}px`
+            ringRef.current.style.top  = `${ringPos.current.y}px`
         }
         rafRef.current = requestAnimationFrame(animate)
     }, [])

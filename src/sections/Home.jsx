@@ -76,7 +76,7 @@ const ScrollHint = styled.div`
     }
 `
 
-const ROLE_TEXT = 'Engine & Graphics Programmer'
+const ROLE_TEXT = 'Game Engine Architect & Graphics Programmer'
 
 export default function Home() {
     const ruleRef    = useRef(null)

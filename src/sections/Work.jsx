@@ -163,7 +163,7 @@ export default function Work() {
             </LogBlock>
             <CVLine>
                 // full project history compiled →{' '}
-                <a href="/cv/loic-chen-cv.pdf" download>DOWNLOAD_CV.pdf ↗</a>
+                <a href="/CV_Lucidum.pdf" download>DOWNLOAD_CV.pdf ↗</a>
             </CVLine>
         </Section>
     )

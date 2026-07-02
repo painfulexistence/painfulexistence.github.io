@@ -1,7 +1,5 @@
 # painfulexistence.github.io
 
-這是一個高互動性、結合 WebGL (React Three Fiber) 與流暢動畫 (GSAP / Motion) 的個人工程師履歷網站。
-
 ---
 
 ## 🚀 快速開始
@@ -10,13 +8,8 @@
 專案基於 **Bun** 與 **Vite** 進行開發：
 
 ```bash
-# 安裝依賴項目
 bun install
-
-# 啟動開發伺服器
-bun run dev
-
-# 專案編譯打包 (打包成果位於 /dist)
+bun run start
 bun run build
 ```
 
@@ -43,7 +36,7 @@ document.documentElement.removeAttribute('data-theme');
 這項操作不需要重新載入頁面，全站所有引用了該設計標記的 React 元件與 CSS 樣式均會自動流暢地更新。
 
 ### 2. 內建主題配色一覽 (Available Themes)
-在 [src/styles/global.css](file:///Users/loicchen/Desktop/code/etc/painfulexistence.github.io/src/styles/global.css) 中定義了以下內建主題屬性值：
+在 `src/styles/global.css` 中定義了以下內建主題屬性值：
 * 🟥 `red` (鮮紅): `#ff1e38`
 * 🟦 `blue` (皇家藍): `#4169e1`
 * 🟪 `blueviolet` (藍紫): `#8a2be2`
@@ -56,7 +49,7 @@ document.documentElement.removeAttribute('data-theme');
 * 🌸 *(預設)* `magenta` (洋紅): `#ee6192` （當沒有 `data-theme` 屬性時自動套用）
 
 ### 3. 如何新增主題 (Add a New Theme)
-若想新增自訂的主題配色（例如 Tiffany 藍 `#00b4d8`），只需至 [src/styles/global.css](file:///Users/loicchen/Desktop/code/etc/painfulexistence.github.io/src/styles/global.css) 的主題區塊追加一行 CSS 變數定義：
+若想新增自訂的主題配色（例如 Tiffany 藍 `#00b4d8`），只需至 `src/styles/global.css` 的主題區塊追加一行 CSS 變數定義：
 
 ```css
 /* src/styles/global.css */
@@ -67,5 +60,5 @@ document.documentElement.removeAttribute('data-theme');
 ---
 
 ## 📐 設計系統與標記規格 (Design System Spec)
-關於顏色、字型大小、字重比例、全域間距與邊界比例等詳細設計規格，請參考專案中的 **[DESIGN.md (設計標記指南)](file:///Users/loicchen/Desktop/code/etc/painfulexistence.github.io/DESIGN.md)**。
+關於顏色、字型大小、字重比例、全域間距與邊界比例等詳細設計規格，請參考專案中的 `DESIGN.md`。
 此文件是專案的「唯一真實來源」(Source of Truth)，開發新元件時請務必遵循其防飄移 (Anti-Drift) 設計規範。

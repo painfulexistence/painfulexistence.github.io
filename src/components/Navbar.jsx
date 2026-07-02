@@ -5,7 +5,7 @@ export default function Navbar() {
 
     return (
         <nav className="navbar">
-            <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="navbar-logo">LOÏC CHEN</a>
+            <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="navbar-logo">LOÏC CHEN (Lucidum)</a>
 
             <ul className="navbar-links">
                 <li>
