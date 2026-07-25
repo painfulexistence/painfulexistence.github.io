@@ -54,6 +54,20 @@ const CardOuter = styled.div`
     &:hover {
         border-color: rgba(0, 229, 255, 0.2);
     }
+
+    /* keyboard focus surfaces the same cue as hover */
+    &:focus-within {
+        border-color: rgba(0, 229, 255, 0.35);
+    }
+
+    /* hovering anywhere on the card lights up the site link + arrow */
+    &:hover .site-link {
+        color: var(--accent);
+    }
+
+    &:hover .site-link .arrow {
+        transform: translateX(4px);
+    }
 `
 
 const CardInner = styled.div`
@@ -63,6 +77,7 @@ const CardInner = styled.div`
     margin: 6px;
     border-radius: 2px;
     overflow: hidden;
+    position: relative;
     transition: border-color var(--t-normal);
 
     .card-outer:hover & {
@@ -88,6 +103,15 @@ const AccentLine = styled.div`
     background: var(--accent);
     margin-bottom: 18px;
     border-radius: 1px;
+`
+
+const EngineKicker = styled.p`
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-xs);
+    letter-spacing: var(--ls-mono-wide);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
 `
 
 const EngineName = styled.h2`
@@ -153,19 +177,30 @@ const SiteLink = styled.a`
 
     &:hover { color: var(--accent); }
     &:hover .arrow { transform: translateX(4px); }
+
+    /* stretched link: makes the whole card a single click target,
+       while staying one real <a> (keyboard-focusable, cmd/middle-click
+       still opens a new tab). Positioned against CardInner. */
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
 `
 
 const ENGINES = [
     {
         name: 'Atmospheric',
+        kicker: 'Cross-platform Game Engine',
         tech: 'C++20 · OpenGL 4.1 · WebGL 2.0 · WebGPU (WIP)',
         features: [
             '2D + 3D PBR forward renderer',
             'Cross-platform: Windows / Linux / macOS / iOS / Android / WebAssembly',
-            'Builit-in post-process effect stack: bloom, CRT, chromatic aberration, ACES tonemapping, etc.',
+            'Built-in post-process effect stack: bloom, CRT, chromatic aberration, ACES tonemapping, etc.',
             'Component-based architecture',
             'Physics engine (Bullet / Box2D) integration',
-            'GUI framework (RmlUI) integration for markdown-based UI',
+            'GUI framework (RmlUI) integration for HTML/CSS-based UI',
             'Simple job system for parallelism',
             'Netcode toolkit for multiplayer games',
             'Lua scripting support'
@@ -175,16 +210,17 @@ const ENGINES = [
     },
     {
         name: 'Project Vapor',
+        kicker: 'Current-gen 3D Engine',
         tech: 'C++20 · Metal 3 · Vulkan 1.2',
         features: [
             'Modern PBR clustered forward renderer with an RHI over Metal/Vulkan',
             'GPU-driven rendering',
             'RT shadows/reflection/AO/GI (Metal only)',
             'Meshlet-based rendering (Metal only)',
-            'Builit-in post-process effect stack: bloom, CRT, ACES tonemapping, chromatic aberration, etc.',
+            'Built-in post-process effect stack: bloom, CRT, ACES tonemapping, chromatic aberration, etc.',
             'ECS architecture',
-            'Physics engine (Jolt / Box2D) integration',
-            'GUI framework (RmlUI) integration for markdown-based UI',
+            'Physics engine (Jolt) integration',
+            'GUI framework (RmlUI) integration for HTML/CSS-based UI',
             'Task scheduler (enkiTS) integration for parallelism'
         ],
         href: 'https://verse.lucidum.dev/vapor/',
@@ -235,6 +271,7 @@ export default function Portfolio() {
                                 />
                                 <CardBody>
                                     <AccentLine />
+                                    <EngineKicker>{engine.kicker}</EngineKicker>
                                     <EngineName>{engine.name}</EngineName>
                                     <TechLine>{engine.tech}</TechLine>
                                     <FeatureList>
@@ -242,7 +279,7 @@ export default function Portfolio() {
                                             <li key={f}>{f}</li>
                                         ))}
                                     </FeatureList>
-                                    <SiteLink href={engine.href} target="_blank" rel="noopener noreferrer">
+                                    <SiteLink className="site-link" href={engine.href} target="_blank" rel="noopener noreferrer">
                                         OPEN ENGINE SITE <span className="arrow">→</span>
                                     </SiteLink>
                                 </CardBody>
