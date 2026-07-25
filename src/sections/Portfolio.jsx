@@ -158,28 +158,34 @@ const SiteLink = styled.a`
 const ENGINES = [
     {
         name: 'Atmospheric',
-        tech: 'C++ · OpenGL 4.1 · WebGL 2.0 · Emscripten',
+        tech: 'C++20 · OpenGL 4.1 · WebGL 2.0 · WebGPU (WIP)',
         features: [
-            'Cross-platform: Windows / macOS / Linux / Emscripten / iOS / Android',
-            '2D + 3D PBR forward renderer, with post-process stack: HDR tonemapping, Bloom, Chromatic Aberration',
+            '2D + 3D PBR forward renderer',
+            'Cross-platform: Windows / Linux / macOS / iOS / Android / WebAssembly',
+            'Builit-in post-process effect stack: bloom, CRT, chromatic aberration, ACES tonemapping, etc.',
             'Component-based architecture',
-            'Built-in job system',
-            'Physics engine (Bullet) integration',
-            'UI framework (RmlUI) integration'
+            'Physics engine (Bullet / Box2D) integration',
+            'GUI framework (RmlUI) integration for markdown-based UI',
+            'Simple job system for parallelism',
+            'Netcode toolkit for multiplayer games',
+            'Lua scripting support'
         ],
         href: 'https://verse.lucidum.dev/atmospheric/',
         videoSrc: 'https://verse.lucidum.dev/videos/DEMO_voxel-world.mov',
     },
     {
         name: 'Project Vapor',
-        tech: 'C++20 · Metal · Vulkan',
+        tech: 'C++20 · Metal 3 · Vulkan 1.2',
         features: [
-            'Modern 3D PBR forward renderer with Tile-based Light Culling',
+            'Modern PBR clustered forward renderer with an RHI over Metal/Vulkan',
+            'GPU-driven rendering',
+            'RT shadows/reflection/AO/GI (Metal only)',
+            'Meshlet-based rendering (Metal only)',
+            'Builit-in post-process effect stack: bloom, CRT, ACES tonemapping, chromatic aberration, etc.',
             'ECS architecture',
-            'Ray-traced shadow maps for main directional light',
-            'Task scheduler (enkiTS) integration',
-            'Physics engine (Jolt) integration',
-            'UI framework (RmlUI) integration'
+            'Physics engine (Jolt / Box2D) integration',
+            'GUI framework (RmlUI) integration for markdown-based UI',
+            'Task scheduler (enkiTS) integration for parallelism'
         ],
         href: 'https://verse.lucidum.dev/vapor/',
         videoSrc: 'https://verse.lucidum.dev/videos/DEMO_raytraced-shadow-and-tiled-light-culling.mov',
