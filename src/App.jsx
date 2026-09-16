@@ -1,65 +1,44 @@
-import { lazy, Suspense, useEffect, useRef, useCallback } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import Navbar from './components/Navbar'
 import Cursor from './components/Cursor'
+import Atmosphere from './components/Atmosphere'
 import Home from './sections/Home'
 import Portfolio from './sections/Portfolio'
 import Teaser from './sections/Teaser'
 import About from './sections/About'
-
-// three.js stack loads as its own chunk after first paint
-const BgScene = lazy(() => import('./components/BgScene'))
+import ContactCTA from './sections/ContactCTA'
+import ContactPage from './pages/ContactPage'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const LandingPage = () => {
-    const grainRef = useRef(null)
-
-    const animateGrain = useCallback(() => {
-        const canvas = grainRef.current
-        if (!canvas) return
-        const ctx = canvas.getContext('2d')
-        canvas.width  = window.innerWidth
-        canvas.height = window.innerHeight
-        const imageData = ctx.createImageData(canvas.width, canvas.height)
-        const { data } = imageData
-        for (let i = 0; i < data.length; i += 4) {
-            const v = Math.random() * 255
-            data[i]     = v
-            data[i + 1] = v
-            data[i + 2] = v
-            data[i + 3] = 255
-        }
-        ctx.putImageData(imageData, 0, 0)
-        requestAnimationFrame(animateGrain)
-    }, [])
+    const location = useLocation()
 
     useEffect(() => {
         ScrollTrigger.refresh()
-        animateGrain()
         return () => ScrollTrigger.getAll().forEach(t => t.kill())
-    }, [animateGrain])
+    }, [])
+
+    useEffect(() => {
+        const id = location.state?.scrollTo
+        if (!id) return
+        requestAnimationFrame(() => {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+        })
+    }, [location.state])
 
     return (
         <>
-            {/* Fixed Three.js canvas — id reserved for future DevVerse iframe */}
-            <Suspense fallback={null}>
-                <BgScene />
-            </Suspense>
-
-            {/* Atmosphere overlays */}
-            <div className="scanline-overlay" />
-            <div className="vignette-overlay" />
-            <canvas id="film-grain" ref={grainRef} />
-
-            {/* Content */}
+            <Atmosphere />
             <Home />
             <Portfolio />
             <Teaser />
             <About />
+            <ContactCTA />
         </>
     )
 }
@@ -71,6 +50,7 @@ export default function App() {
             <Cursor />
             <Routes>
                 <Route path="/" element={<LandingPage />} />
+                <Route path="/contact" element={<ContactPage />} />
             </Routes>
         </BrowserRouter>
     )

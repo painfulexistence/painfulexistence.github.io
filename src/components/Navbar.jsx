@@ -1,21 +1,51 @@
+import { useLocation, useNavigate } from 'react-router-dom'
+
 export default function Navbar() {
-    const scrollTo = (id) => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    const location = useLocation()
+    const navigate = useNavigate()
+    const onLanding = location.pathname === '/'
+
+    const goToSection = (id) => {
+        if (onLanding) {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+        } else {
+            navigate('/', { state: { scrollTo: id } })
+        }
+    }
+
+    const goToContact = () => {
+        if (location.pathname === '/contact') {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        } else {
+            navigate('/contact')
+        }
+    }
+
+    const goHome = (e) => {
+        e.preventDefault()
+        if (onLanding) {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        } else {
+            navigate('/')
+        }
     }
 
     return (
         <nav className="navbar">
-            <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="navbar-logo">LOÏC CHEN (Lucidum)</a>
+            <a href="/" onClick={goHome} className="navbar-logo">LOÏC CHEN (Lucidum)</a>
 
             <ul className="navbar-links">
                 <li>
-                    <button onClick={() => scrollTo('engines')}>[01] MY WORKS</button>
+                    <button onClick={() => goToSection('engines')}>[01] MY WORKS</button>
                 </li>
                 <li>
-                    <button onClick={() => scrollTo('devverse')}>[02] DEVVERSE</button>
+                    <button onClick={() => goToSection('devverse')}>[02] DEVVERSE</button>
                 </li>
                 <li>
-                    <button onClick={() => scrollTo('about')}>[03] ABOUT</button>
+                    <button onClick={() => goToSection('about')}>[03] ABOUT</button>
+                </li>
+                <li>
+                    <button onClick={goToContact}>[04] CONTACT</button>
                 </li>
             </ul>
 
