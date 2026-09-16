@@ -1,28 +1,19 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { lazy, Suspense, useEffect, useRef, useCallback } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Canvas } from '@react-three/fiber'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import styled from '@emotion/styled'
 
 import Navbar from './components/Navbar'
 import Cursor from './components/Cursor'
-import StarryBackground from './components/StarryBackground'
 import Home from './sections/Home'
 import Portfolio from './sections/Portfolio'
 import Teaser from './sections/Teaser'
 import About from './sections/About'
 
-gsap.registerPlugin(ScrollTrigger)
+// three.js stack loads as its own chunk after first paint
+const BgScene = lazy(() => import('./components/BgScene'))
 
-const BgCanvas = styled.div`
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-`
+gsap.registerPlugin(ScrollTrigger)
 
 const LandingPage = () => {
     const grainRef = useRef(null)
@@ -55,14 +46,9 @@ const LandingPage = () => {
     return (
         <>
             {/* Fixed Three.js canvas — id reserved for future DevVerse iframe */}
-            <BgCanvas id="devverse-bg">
-                <Canvas
-                    camera={{ position: [0, 0, 100], fov: 60 }}
-                    gl={{ antialias: true, alpha: true }}
-                >
-                    <StarryBackground />
-                </Canvas>
-            </BgCanvas>
+            <Suspense fallback={null}>
+                <BgScene />
+            </Suspense>
 
             {/* Atmosphere overlays */}
             <div className="scanline-overlay" />

@@ -2,10 +2,86 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Loïc Chen (Lucidum)</title>
+
+    <!-- Identity -->
+    <title>Loïc Chen (Lucidum) · Game Engine Architect & Graphics Programmer</title>
+    <meta name="description" content="Game engine architect & graphics programmer building two engines solo — Project Vapor (Metal/Vulkan, hybrid ray tracing) and Atmospheric (cross-platform C++, Lua, web)." />
+    <meta name="author" content="Loïc Chen" />
+    <link rel="canonical" href="https://lucidum.dev/" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#020202" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Fonts: preconnect + stylesheet in head (was a CSS @import; head loading starts earlier) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lucidum" />
+    <meta property="og:title" content="Loïc Chen (Lucidum) · Game Engine Architect & Graphics Programmer" />
+    <meta property="og:description" content="Building two game engines solo in C++ — chasing current-gen rendering in Project Vapor, shipping cross-platform in Atmospheric." />
+    <meta property="og:url" content="https://lucidum.dev/" />
+    <meta property="og:image" content="https://lucidum.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Loïc Chen (Lucidum) — Game Engine Architect & Graphics Programmer. Project Vapor: C++20, Metal, Vulkan. Atmospheric: cross-platform, Lua, web." />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@DevLucidum" />
+    <meta name="twitter:creator" content="@DevLucidum" />
+    <meta name="twitter:title" content="Loïc Chen (Lucidum) · Game Engine Architect & Graphics Programmer" />
+    <meta name="twitter:description" content="Building two game engines solo in C++ — chasing current-gen rendering in Project Vapor, shipping cross-platform in Atmospheric." />
+    <meta name="twitter:image" content="https://lucidum.dev/og-image.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://lucidum.dev/#person",
+          "name": "Loïc Chen",
+          "alternateName": ["Lucidum", "painfulexistence"],
+          "url": "https://lucidum.dev/",
+          "image": "https://lucidum.dev/profile_squared.jpg",
+          "jobTitle": "Game Engine Architect & Graphics Programmer",
+          "description": "Game engine architect and graphics programmer building two engines solo: Project Vapor (C++20, Metal, Vulkan, hybrid ray tracing) and Atmospheric (cross-platform C++ engine with Lua scripting and WebAssembly support).",
+          "knowsAbout": [
+            "game engine architecture",
+            "real-time rendering",
+            "ray tracing",
+            "GPU-driven rendering",
+            "Metal",
+            "Vulkan",
+            "C++"
+          ],
+          "sameAs": [
+            "https://github.com/painfulexistence",
+            "https://x.com/DevLucidum",
+            "https://painfulexistence.substack.com"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://lucidum.dev/#website",
+          "url": "https://lucidum.dev/",
+          "name": "Lucidum",
+          "publisher": { "@id": "https://lucidum.dev/#person" }
+        }
+      ]
+    }
+    </script>
+
     <script>
       // Handle SPA redirect from 404.html (GitHub Pages routing)
       (function(l) {
@@ -26,7 +102,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-  
+
       gtag('config', 'G-BHMWKPM7NH');
     </script>
   </body>
