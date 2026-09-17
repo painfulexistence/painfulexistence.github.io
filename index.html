@@ -51,7 +51,7 @@
           "@type": "Person",
           "@id": "https://lucidum.dev/#person",
           "name": "Loïc Chen",
-          "alternateName": ["Lucidum", "painfulexistence"],
+          "alternateName": ["Lucidum", "Loic Chen", "painfulexistence"],
           "url": "https://lucidum.dev/",
           "image": "https://lucidum.dev/profile_squared.jpg",
           "jobTitle": "Game Engine Architect & Graphics Programmer",
@@ -95,7 +95,32 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      Pre-hydration content. React's createRoot() clears #root on mount, so this
+      is never seen alongside the app — it exists so the first HTML response
+      carries the same identity the rendered page shows (the hero name is drawn
+      by an animated ScrambleText component, i.e. JS-only), and so the page
+      isn't a blank black screen while the bundle loads.
+      Keep this in sync with the hero copy.
+    -->
+    <div id="root">
+      <main style="max-width:860px;margin:0 auto;padding:18vh 8vw 0;font-family:system-ui,sans-serif;color:#e8e8e8;background:#020202">
+        <h1 style="font-size:clamp(48px,11vw,120px);line-height:.95;letter-spacing:.02em;margin:0 0 20px;font-weight:800">Loïc Chen</h1>
+        <p style="font-size:15px;color:#666680;margin:0 0 28px;letter-spacing:.06em">Game Engine Architect &amp; Graphics Programmer</p>
+        <p style="font-size:15px;line-height:1.6;color:#8a8aa0;max-width:60ch">
+          I build game engines from scratch in C++ — <strong>Project Vapor</strong>, a current-gen 3D
+          engine targeting Metal and Vulkan with GPU-driven rendering and hybrid ray tracing, and
+          <strong>Atmospheric</strong>, a cross-platform 2D + 3D engine with Lua scripting and
+          WebAssembly support.
+        </p>
+        <p style="font-size:14px;margin-top:24px">
+          <a href="https://verse.lucidum.dev/vapor/" style="color:#00e5ff">Project Vapor</a> ·
+          <a href="https://verse.lucidum.dev/atmospheric/" style="color:#00e5ff">Atmospheric</a> ·
+          <a href="https://github.com/painfulexistence" style="color:#00e5ff">GitHub</a> ·
+          <a href="https://painfulexistence.substack.com" style="color:#00e5ff">Arcane Realms</a>
+        </p>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
     <script src="https://www.googletagmanager.com/gtag/js?id=G-BHMWKPM7NH"></script>
     <script>
